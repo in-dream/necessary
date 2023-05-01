@@ -19,3 +19,13 @@ export const generateExcerpt = (content: string,length: number = 145) => {
     return excerpt;
 }
 
+export const generateImageList = (content: string) => {
+    const imageList: string[] = [];
+    const regex = /!\[[^\]]*\]\(([^)]*)\)/g;
+    let result = regex.exec(content);
+    while (result) {
+        imageList.push(result[1]);
+        result = regex.exec(content);
+    }
+    return imageList;
+}

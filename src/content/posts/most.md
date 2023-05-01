@@ -17,4 +17,3 @@ music:
 ---
 
 也许如今，这首歌最能代表我的处境。
-![test-img](https://p2.music.126.net/PywoXPKK3AjseU0Wx9wdXw==/109951167267731534.jpg?param=130y130)
