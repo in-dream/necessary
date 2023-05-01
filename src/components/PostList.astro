@@ -6,7 +6,7 @@ import Player from "./Player.astro";
 import RenderContent from "./RenderContent.astro";
 import { DocumentText } from "@vicons/ionicons5";
 import PhotoView from "@dynamic/PhotoView";
-import { generateExcerpt } from "@utils/index";
+import { generateExcerpt,generateImageList } from "@utils/index";
 interface Props {
   posts: CollectionEntry<"posts">[] | undefined;
 }
@@ -53,9 +53,7 @@ const { posts } = Astro.props;
                     <Player {...post.data.music} />
                   </div>
                 ) : null}
-                {post.data.type === "photo" ? (
-                  <PhotoView client:load imgList={post.data.photo} />
-                ) : null}
+                <PhotoView client:load imgList={generateImageList(post.body)} />
               </div>
               <div class="text-xs text-slate-500/80 pt-4 pl-16 flex items-center">
                 <LocationOutline class="w-4 mr-1 text-slate-500/70" />
