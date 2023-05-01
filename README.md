@@ -29,7 +29,7 @@ An Astro-based theme for quickly building a blog.
 ### how to install
 
 ```bash
-# yarn install
-# yarn dev (developer mode)
-# yarn build (packaging)
+# pnpm install
+# pnpm dev (developer mode)
+# pnpm build (packaging)
 ```
