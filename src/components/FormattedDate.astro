@@ -1,0 +1,19 @@
+---
+import { formatDate } from '@utils/index';
+
+export interface Props {
+  date: Date;
+}
+
+const { date } = Astro.props;
+
+
+
+
+---
+
+<div>
+  {
+    formatDate(date)
+  }
+</div>

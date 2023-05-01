@@ -1,0 +1,49 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { CaretForward } from "@vicons/ionicons5";
+import type { CollectionEntry } from "astro:content";
+import RenderContent from "./RenderContent.astro";
+const { post } = Astro.props;
+
+interface Props {
+  post: CollectionEntry<"pages">;
+}
+---
+
+<article class="text-slate-600 dark:text-slate-500 select-none">
+  <div
+    class="flex text-xs items-center font-bold border-b px-6 py-4 border-slate-300/10 dark:border-slate-700/10"
+  >
+    <a href="/">首页</a>
+    <CaretForward class="w-4 mx-2" />
+    {post.data.title}
+  </div>
+
+  {
+    post.data.type === "default" ? (
+      <div class="text-sm px-6 py-2 mt-2">
+        <RenderContent {...post} />
+      </div>
+    ) : (
+      <div class="px-6 py-2 grid grid-cols-2 gap-7 mt-4 dark:text-slate-500">
+        {post?.data?.links?.map((item) => {
+          return (
+            <a href={item.url} target="_blank">
+              <div class="flex p-2 text-sm items-center bg-slate-100 dark:bg-slate-900 rounded overflow-hidden">
+                <img
+                  src={item.url + "favicon.ico"}
+                  alt="favicon"
+                  class="w-10 h-10 mr-3"
+                />
+                <div class="flex flex-col justify-between">
+                  <div class="font-bold">{item.title}</div>
+                  <div class="text-xs">{item.desc}</div>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    )
+  }
+</article>

@@ -1,0 +1,65 @@
+---
+import { CaretForward, LocationOutline } from "@vicons/ionicons5";
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
+import Player from "./Player.astro";
+import RenderContent from "./RenderContent.astro";
+import PhotoView from "@dynamic/PhotoView";
+interface Props {
+  post: CollectionEntry<"posts"> | undefined;
+}
+const { post } = Astro.props;
+---
+
+<div
+  class="flex text-xs items-center font-bold border-b px-6 py-4 border-slate-300/10 dark:border-slate-700/10 text-slate-500"
+>
+  <a href="/">首页</a>
+  <CaretForward class="w-4 mx-2" />
+  {post?.data.title}
+</div>
+<div class="p-4 gap-12 grid">
+  {
+    post != undefined ? (
+      <article>
+        <div>
+          <div class="flex justify-between">
+            <div class="flex">
+              <img
+                src={post.data.avatar}
+                alt="avatars"
+                class="w-12 h-12 rounded"
+              />
+              <div class="pl-4 text-slate-500 flex flex-col justify-between">
+                <div class="text-sm font-bold">{post.data.author}</div>
+                <div class="text-sm">{post.data.title}</div>
+              </div>
+            </div>
+            <div class="text-xs text-slate-500">
+              <FormattedDate date={post.data.date} />
+            </div>
+          </div>
+          <div>
+            <div class="text-sm text-slate-500/80 pt-4 ">
+              <RenderContent {...post} />
+            </div>
+            <div>
+              {post.data.type === "music" ? (
+                <div class="pt-4 pl-16">
+                  <Player {...post.data.music} />
+                </div>
+              ) : null}
+              {post.data.type === "photo" ? (
+                <PhotoView client:load imgList={post.data.photo} />
+              ) : null}
+            </div>
+            <div class="text-xs text-slate-500/80 pt-4 flex items-center">
+              <LocationOutline class="w-4 mr-1 text-slate-500/70" />
+              {post.data.location}
+            </div>
+          </div>
+        </div>
+      </article>
+    ) : null
+  }
+</div>

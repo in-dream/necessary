@@ -1,0 +1,40 @@
+---
+import { RefreshOutline } from "@vicons/ionicons5";
+import { raving } from "@consts";
+const date = new Date();
+const year = date.getFullYear();
+const month = date.getMonth() + 1;
+const day = date.getDate();
+
+let num = Math.floor(Math.random() * (0 - raving.length) + raving.length);
+---
+
+<div class="px-8 text-sm text-slate-600 select-none">
+  呓语
+  <div class="w-full h-36 bg-slate600 mt-5 rounded overflow-hidden relative">
+    <img
+      src="./images/times.jpg"
+      alt="background"
+      class="blur-sm grayscale-50"
+    />
+    <div class="absolute top-0 text-white/80 w-full h-full p-5 bg-black/50">
+      <div class="flex justify-between items-center">
+        <div>
+          <div class="text-2xl">{day}</div>
+          <div class="text-sm">{year}/{month}</div>
+        </div>
+        <RefreshOutline class="w-8 cursor-pointer" id="raving-refresh" />
+      </div>
+      <div class="pt-4 line-clamp-2" id="raving-content">{raving[num]}</div>
+    </div>
+  </div>
+</div>
+<script>
+  import { raving } from "@consts";
+  const ravingRefresh = document.getElementById("raving-refresh");
+  const ravingContent = document.getElementById("raving-content");
+  ravingRefresh?.addEventListener("click", () => {
+    let num = Math.floor(Math.random() * (0 - raving.length) + raving.length);
+    if (ravingContent) ravingContent.innerHTML = raving[num];
+  });
+</script>
