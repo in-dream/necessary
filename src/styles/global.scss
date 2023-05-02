@@ -1,0 +1,53 @@
+@font-face {
+  font-family: "code";
+  src: url("../assets/fonts/code.woff2");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "sans";
+  src: url("../assets/fonts/Sans-Regular.woff2");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "sans";
+  src: url("../assets/fonts/Sans-Medium.woff2");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "neue";
+  src: url("../assets/fonts/BebasNeue-Regular.ttf");
+}
+
+html {
+  body {
+    font-family: "code", "sans", sans-serif;
+    &::-webkit-scrollbar {
+      background-color: rgb(255, 255, 255);
+      width: 3px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(154, 175, 184);
+    }
+  }
+  &[class="dark"] {
+    body {
+      &::-webkit-scrollbar {
+        background-color: #0f172af2;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #0f172af2;
+      }
+    }
+  }
+}
+
+html {
+  background-color: rgba(221, 227, 235, 0.2);
+}
+
+.clip-path-background {
+  clip-path: polygon(0 0, 100% 0, 55% 100%, 0 100%);
+}
