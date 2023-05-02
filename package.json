@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build  --verbose",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "post": "node ./scripts/create.js"
@@ -35,6 +35,8 @@
     "vue": "^3.2.47"
   },
   "devDependencies": {
-    "@types/uuid": "^9.0.1"
+    "@tailwindcss/typography": "^0.5.9",
+    "@types/uuid": "^9.0.1",
+    "@vicons/fa": "^0.12.0"
   }
 }

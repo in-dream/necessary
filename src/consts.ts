@@ -1,3 +1,10 @@
+import {
+  LogoGithub,
+  Mail,
+  LogoInstagram,
+  LocationSharp,
+} from "@vicons/ionicons5";
+import { TelegramPlane } from "@vicons/fa";
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
@@ -44,5 +51,32 @@ export const countdown = [
     date: "2022/8/24",
     title: "Lost something",
     background: "./images/banner.jpeg",
+  },
+];
+
+export const followMe = [
+  {
+    icon: LocationSharp,
+    title: "Shanghai",
+  },
+  {
+    icon: LogoGithub,
+    url: "https://github.com/nacoliu",
+    title: "NaCoLiu",
+  },
+  {
+    icon: TelegramPlane,
+    url: "https://t.me/nacoliu",
+    title: "t.me/nacoliu",
+  },
+  {
+    icon: Mail,
+    url: "mailto:naco@nco.im",
+    title: "naco@nco.im",
+  },
+  {
+    icon: LogoInstagram,
+    url: "https://instagram.com/nacoliu",
+    title: "Instagram.com/nacoliu",
   },
 ];

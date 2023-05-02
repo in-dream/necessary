@@ -18,10 +18,13 @@ export default defineComponent({
     };
 
     const dialogEvent = (event: Event) => {
-      event.stopPropagation();
       document.documentElement.style.overflowY = "scroll";
       dialogConfig.state = false;
     };
+
+    const stop = (event: Event)=>{
+      event.stopPropagation();
+    }
 
     return () => {
       return props.imgList != undefined && props.imgList.length > 0 ? (
@@ -39,7 +42,7 @@ export default defineComponent({
                   <Close class="w-4" />
                 </div>
               </div>
-              <img src={dialogConfig.photo} class="h-3/4" />
+              <img src={dialogConfig.photo} class="h-3/4" onClick={stop} />
             </div>
           ) : null}
 
