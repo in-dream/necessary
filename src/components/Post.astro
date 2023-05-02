@@ -29,7 +29,7 @@ const { post } = Astro.props;
             </div>
             <div>
               {post.data.type === "music" ? (
-                <div class="pt-4 pl-16">
+                <div class="pt-4">
                   <Player {...post.data.music} />
                 </div>
               ) : null}
