@@ -9,6 +9,7 @@ import Raving from "@components/Raving.astro";
 import ThemeIcon from "@components/ThemeIcon.astro";
 import ShotView from "@dynamic/ShotView";
 import Apropos from "@dynamic/Apropos";
+import FollowMe from "@dynamic/FollowMe";
 const posts = (await getCollection("posts")).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
@@ -26,6 +27,7 @@ const posts = (await getCollection("posts")).sort(
     class="bg-gray-100 row-span-1 md:min-lg:hidden dark:bg-slate-900/75 rounded-r-lg"
   >
     <ThemeIcon />
+    <FollowMe />
     <Raving />
     <ShotView />
     <Apropos />

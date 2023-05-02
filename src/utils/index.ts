@@ -12,7 +12,8 @@ export const dateDiff = (date: Date) => {
 }
 
 export const generateExcerpt = (content: string,length: number = 145) => {
-    const excerpt = content.replace(/<[^>]+>/g, '').replace(/!\[[^\]]*\]\([^)]*\)/g, '').substring(0, length);
+    const regex = /!\[[^\]]*\]\(([^)]*)\)|```[\s\S]*?```|#+\s+.*|<[^>]+>/g;
+    const excerpt = content.replace(/<[^>]+>/g, '').replace(regex, '').substring(0, length);
     if (excerpt.length >= length) {
         return excerpt.slice(0, length) + "...";
     }
@@ -29,3 +30,4 @@ export const generateImageList = (content: string) => {
     }
     return imageList;
 }
+
