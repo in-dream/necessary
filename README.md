@@ -2,7 +2,15 @@
 
 An Astro-based theme for quickly building a blog.
 
-![alt preview](https://raw.githubusercontent.com/NaCoLiu/necessary/main/preview.png)
+![necessary](https://img.shields.io/github/stars/nacoliu/necessary?style=for-the-badge&color=%230f172af2)
+![neccssary](https://img.shields.io/github/license/nacoliu/necessary?style=for-the-badge&color=%230f172af2)
+![necessary](https://img.shields.io/github/languages/top/nacoliu/necessary?color=%230f172af2&style=for-the-badge)
+![necessary](https://img.shields.io/github/languages/code-size/nacoliu/necessary?color=%230f172af2&style=for-the-badge)
+![necessary](https://img.shields.io/github/last-commit/nacoliu/necessary?color=%230f172af2&style=for-the-badge)
+![necessary](https://img.shields.io/github/package-json/v/nacoliu/necessary/main?style=for-the-badge&color=%230f172af2)
+
+
+![alt preview](https://raw.githubusercontent.com/NaCoLiu/necessary/main/preview.jpg)
 
 ## Features
 
