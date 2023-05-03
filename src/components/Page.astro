@@ -1,8 +1,7 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import { CaretForward } from "@vicons/ionicons5";
 import type { CollectionEntry } from "astro:content";
 import RenderContent from "./RenderContent.astro";
+import NavLink from "./NavLink.astro";
 const { post } = Astro.props;
 
 interface Props {
@@ -11,14 +10,7 @@ interface Props {
 ---
 
 <article class="text-slate-600 dark:text-slate-500 select-none">
-  <div
-    class="flex text-sm items-center font-bold border-b px-6 py-4 border-gray-300/20 dark:border-slate-700/10 text-slate-500"
-  >
-    <a href="/">首页</a>
-    <CaretForward class="w-4 mx-2" />
-    {post?.data.title}
-  </div>
-
+  <NavLink title={post.data.title} />
   {
     post.data.type === "default" ? (
       <div class="text-sm px-6 py-2 mt-2">

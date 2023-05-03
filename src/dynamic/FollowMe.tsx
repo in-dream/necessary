@@ -1,14 +1,15 @@
 import { followMe } from "@consts";
 import { defineComponent, h } from "vue";
-
+import { I18n } from "@utils/vue.entry";
+const { t } = I18n.global;
 export default defineComponent({
   setup() {
     return () => (
       <div class="px-8 text-sm text-slate-600 select-none">
-        <div>Follow Me</div>
+        <div>{t('follow')}</div>
         <ul class="mt-4 mb-6 flex gap-2 flex-col">
           {followMe.map((i) => (
-            <li class="">
+            <li>
               <a
                 href={i.url}
                 target="_blank"
