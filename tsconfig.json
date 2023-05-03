@@ -14,7 +14,8 @@
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"],
       "@consts": ["consts.ts"],
-      "@dynamic/*": ["dynamic/*"]
+      "@dynamic/*": ["dynamic/*"],
+      "@i18n/*": ["i18n/*"]
     }
   },
 }

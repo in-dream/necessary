@@ -1,14 +1,17 @@
 import { dateDiff } from "@utils/index";
 import { getCollection } from "astro:content";
 import { defineComponent } from "vue";
+import { I18n } from "@utils/vue.entry";
+const { t } = I18n.global;
 const times = (await getCollection("times")).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
+
 export default defineComponent({
   setup() {
     return () => (
       <div class="px-8 text-sm text-slate-600 select-none">
-        <div>事件</div>
+        <div>{t('apropos')}</div>
         {times.map((i) => {
           return (
             <div class="cursor-pointer bg-slate-300 dark:bg-slate-700 box-content h-24 rounded mt-5 relative  overflow-hidden  opacity-75 flex justify-center items-center">

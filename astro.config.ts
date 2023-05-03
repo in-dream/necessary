@@ -12,6 +12,7 @@ export default defineConfig({
     sitemap(),
     vue({
       jsx: true,
+      appEntrypoint: '/src/utils/vue.entry.ts'
     }),
     tailwind(),
   ],

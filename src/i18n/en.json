@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Me",
+    "links": "Links"
+  },
+  "header": {
+    "post": "Post"
+  },
+  "raving": "Raving",
+  "follow": "Follow Me",
+  "apropos": "Apropos",
+  "techStack": "Tech Stack"
+}
