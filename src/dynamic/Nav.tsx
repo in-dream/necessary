@@ -1,15 +1,11 @@
-import { defineComponent } from "vue";
-import {
-  InformationCircle,
-  PeopleCircle,
-  Bookmarks,
-} from "@vicons/ionicons5";
-import { title } from "@consts";
-import { I18n } from "@utils/vue.entry";
+import { defineComponent } from 'vue';
+import { InformationCircle, PeopleCircle, Bookmarks } from '@vicons/ionicons5';
+import { title } from '@consts';
+import { useI18n } from 'vue-i18n';
 
 export default defineComponent({
   setup() {
-    const { t } = I18n.global;
+    const { t } = useI18n();
     return () => (
       <div class="rounded-tl-lg bg-gray-100 col-span-1 flex flex-col justify-between dark:bg-slate-900/75">
         <div>
@@ -22,19 +18,19 @@ export default defineComponent({
               <li class="bg-slate-400 dark:bg-slate-600/25 rounded-lg dark:text-slate-300 text-white cursor-pointer dark:hover:bg-slate-600/25">
                 <a href="/" class="rounded-lg flex p-2 py-3">
                   <Bookmarks class="w-7 pr-2" />
-                  {t("nav.home")}
+                  {t('nav.home')}
                 </a>
               </li>
               <li class="rounded hover:bg-slate-400 hover:text-white dark:hover:bg-slate-600/25 cursor-pointer">
                 <a href="/about" class="rounded-lg flex p-2 py-3">
                   <InformationCircle class="w-7 pr-2" />
-                  {t("nav.about")}
+                  {t('nav.about')}
                 </a>
               </li>
               <li class="rounded hover:bg-slate-400 hover:text-white cursor-pointer dark:hover:bg-slate-600/25">
                 <a href="/links" class="rounded-lg flex p-2 py-3">
                   <PeopleCircle class="w-7 pr-2" />
-                  {t("nav.links")}
+                  {t('nav.links')}
                 </a>
               </li>
             </ul>

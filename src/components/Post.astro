@@ -1,13 +1,13 @@
 ---
-import { CaretForward, LocationOutline } from "@vicons/ionicons5";
-import type { CollectionEntry } from "astro:content";
-import FormattedDate from "./FormattedDate.astro";
-import Player from "./Player.astro";
-import RenderContent from "./RenderContent.astro";
-import PhotoView from "@dynamic/PhotoView";
-import NavLink from "./NavLink.astro";
+import { CaretForward, LocationOutline } from '@vicons/ionicons5';
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+import Player from './Player.astro';
+import RenderContent from './RenderContent.astro';
+import PhotoView from '@dynamic/PhotoView';
+import NavLink from './NavLink.astro';
 interface Props {
-  post: CollectionEntry<"posts"> | undefined;
+  post: CollectionEntry<'posts'> | undefined;
 }
 const { post } = Astro.props;
 ---
@@ -23,12 +23,12 @@ const { post } = Astro.props;
               <RenderContent {...post} />
             </div>
             <div>
-              {post.data.type === "music" ? (
+              {post.data.type === 'music' ? (
                 <div class="pt-4">
                   <Player {...post.data.music} />
                 </div>
               ) : null}
-              {post.data.type === "photo" ? (
+              {post.data.type === 'photo' ? (
                 <PhotoView client:load imgList={post.data.photo} />
               ) : null}
             </div>

@@ -1,6 +1,6 @@
 ---
-import BaseHead from "@components/BaseHead.astro";
-import Nav from "@dynamic/Nav";
+import BaseHead from '@components/BaseHead.astro';
+import Nav from '@dynamic/Nav';
 
 interface Props {
   title: string;
@@ -15,11 +15,11 @@ const { title, description } = Astro.props;
     <BaseHead title={title} description={description} />
   </head>
 
-  <body class="dark:bg-slate-900/95 ">
+  <body class="dark:bg-slate-900/95">
     <div class="pt-12 w-screen grid grid-cols-4 max-w-7xl m-auto min-h-screen">
       {/* Navigation */}
       <Nav client:load />
       <slot />
-     </div>
+    </div>
   </body>
 </html>

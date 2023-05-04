@@ -1,5 +1,5 @@
-import { PropType, defineComponent, reactive, ref } from "vue";
-import { Close } from "@vicons/ionicons5";
+import { PropType, defineComponent, reactive, ref } from 'vue';
+import { Close } from '@vicons/ionicons5';
 export default defineComponent({
   props: {
     imgList: {
@@ -9,22 +9,22 @@ export default defineComponent({
   setup(props) {
     const dialogConfig = reactive({
       state: false,
-      photo: "",
+      photo: '',
     });
     const dialogPhoto = (photo: number) => {
       dialogConfig.state = true;
-      document.documentElement.style.overflowY = "hidden";
+      document.documentElement.style.overflowY = 'hidden';
       if (props.imgList) dialogConfig.photo = props.imgList[photo];
     };
 
     const dialogEvent = (event: Event) => {
-      document.documentElement.style.overflowY = "scroll";
+      document.documentElement.style.overflowY = 'scroll';
       dialogConfig.state = false;
     };
 
-    const stop = (event: Event)=>{
+    const stop = (event: Event) => {
       event.stopPropagation();
-    }
+    };
 
     return () => {
       return props.imgList != undefined && props.imgList.length > 0 ? (
