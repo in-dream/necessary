@@ -26,7 +26,7 @@
     "@jridgewell/sourcemap-codec": "^1.4.15",
     "@vicons/ionicons5": "^0.12.0",
     "@vueuse/core": "^10.1.0",
-    "astro": "^2.3.3",
+    "astro": "^2.4.1",
     "pinia": "^2.0.35",
     "postcss": "^8.4.23",
     "prettier-plugin-astro": "^0.8.0",
