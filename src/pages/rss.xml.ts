@@ -4,7 +4,7 @@ import { title, description } from '@consts';
 
 export async function get(context: { site: string }) {
   const posts = await getCollection('posts');
-  return rss({
+  const result = rss({
     title: title,
     description: description,
     site: context.site,
@@ -13,5 +13,7 @@ export async function get(context: { site: string }) {
       link: `/${post.slug}`,
       pubDate: post.data.date,
     })),
+    stylesheet: '/rss/styles.xsl',
   });
+  return result;
 }
