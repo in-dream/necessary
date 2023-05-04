@@ -5,7 +5,7 @@ import { getCollection } from "astro:content";
 import Search from "@components/Search.astro";
 import Banner from "@components/Banner.astro";
 import Raving from "@components/Raving.astro";
-import ThemeIcon from "@components/ThemeIcon.astro";
+import Tools from "@components/Tools.astro";
 import ShotView from "@dynamic/ShotView";
 import Apropos from "@dynamic/Apropos";
 import { generateExcerpt } from "@utils/index";
@@ -32,7 +32,7 @@ const description = generateExcerpt(posts[pageIndex].body);
   <div
     class="bg-gray-100 row-span-1 md:min-lg:hidden dark:bg-slate-900/75 rounded-lr-lg"
   >
-    <ThemeIcon />
+    <Tools />
     <Raving />
     <ShotView />
     <Apropos />
