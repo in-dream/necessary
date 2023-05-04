@@ -5,11 +5,7 @@ import { title, description } from '@consts';
 import Layout from '@layouts/Layout.astro';
 import Search from '@components/Search.astro';
 import Banner from '@components/Banner.astro';
-import Raving from '@dynamic/Raving';
-import Tools from '@dynamic/Tools';
-import ShotView from '@dynamic/ShotView';
-import Apropos from '@dynamic/Apropos';
-import FollowMe from '@dynamic/FollowMe';
+import Sidebar from '@dynamic/Sidebar';
 const posts = (await getCollection('posts')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
@@ -23,11 +19,5 @@ const posts = (await getCollection('posts')).sort(
     <Banner />
     <PostList posts={posts} />
   </div>
-  <div class="bg-gray-100 row-span-1 md:min-lg:hidden dark:bg-slate-900/75 rounded-tr-lg">
-    <Tools client:load />
-    <FollowMe client:load />
-    <Raving client:load />
-    <ShotView client:load />
-    <Apropos client:load />
-  </div>
+  <Sidebar client:load />
 </Layout>
