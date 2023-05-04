@@ -6,7 +6,7 @@ import Layout from '@layouts/Layout.astro';
 import Search from '@components/Search.astro';
 import Banner from '@components/Banner.astro';
 import Raving from '@dynamic/Raving';
-import Tools from '@components/Tools.astro';
+import Tools from '@dynamic/Tools';
 import ShotView from '@dynamic/ShotView';
 import Apropos from '@dynamic/Apropos';
 import FollowMe from '@dynamic/FollowMe';
@@ -24,7 +24,7 @@ const posts = (await getCollection('posts')).sort(
     <PostList posts={posts} />
   </div>
   <div class="bg-gray-100 row-span-1 md:min-lg:hidden dark:bg-slate-900/75 rounded-tr-lg">
-    <Tools />
+    <Tools client:load />
     <FollowMe client:load />
     <Raving client:load />
     <ShotView client:load />

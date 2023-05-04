@@ -4,11 +4,12 @@ import { title, description } from '@consts';
 
 export async function get(context: { site: string }) {
   const posts = await getCollection('posts');
+  const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   const result = rss({
     title: title,
     description: description,
     site: context.site,
-    items: posts.map((post) => ({
+    items: sortedPosts.map((post) => ({
       ...post.data,
       link: `/${post.slug}`,
       pubDate: post.data.date,

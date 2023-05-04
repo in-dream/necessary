@@ -6,9 +6,7 @@ export const formatDate = (date: Date) => {
 };
 
 export const dateDiff = (date: Date) => {
-  const today = new Date();
-  const diff = today.getTime() - date.getTime();
-  return Math.floor(diff / (24 * 3600 * 1000));
+  return Math.floor((new Date().getTime() - date.getTime()) / (24 * 3600 * 1000));
 };
 
 export const generateExcerpt = (content: string, length: number = 145) => {
@@ -17,10 +15,7 @@ export const generateExcerpt = (content: string, length: number = 145) => {
     .replace(/<[^>]+>/g, '')
     .replace(regex, '')
     .substring(0, length);
-  if (excerpt.length >= length) {
-    return excerpt.slice(0, length) + '...';
-  }
-  return excerpt;
+  return excerpt.length >= length ? `${excerpt.slice(0, length)}...` : excerpt;
 };
 
 export const generateImageList = (content: string) => {

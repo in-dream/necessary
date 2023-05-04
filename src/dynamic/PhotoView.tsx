@@ -1,23 +1,31 @@
-import { PropType, defineComponent, reactive, ref } from 'vue';
+import { PropType, defineComponent, reactive } from 'vue';
 import { Close } from '@vicons/ionicons5';
+
+interface DialogConfig {
+  state: boolean;
+  photo: string;
+}
+
 export default defineComponent({
   props: {
     imgList: {
       type: Array as PropType<string[]>,
+      required: true,
     },
   },
   setup(props) {
-    const dialogConfig = reactive({
+    const dialogConfig = reactive<DialogConfig>({
       state: false,
       photo: '',
     });
+
     const dialogPhoto = (photo: number) => {
       dialogConfig.state = true;
       document.documentElement.style.overflowY = 'hidden';
-      if (props.imgList) dialogConfig.photo = props.imgList[photo];
+      dialogConfig.photo = props.imgList[photo];
     };
 
-    const dialogEvent = (event: Event) => {
+    const dialogEvent = () => {
       document.documentElement.style.overflowY = 'scroll';
       dialogConfig.state = false;
     };
@@ -27,9 +35,11 @@ export default defineComponent({
     };
 
     return () => {
-      return props.imgList != undefined && props.imgList.length > 0 ? (
+      if (!props.imgList.length) return null;
+
+      return (
         <div class="pt-4 pl-16 pr-28 flex flex-wrap gap-1">
-          {dialogConfig.state ? (
+          {dialogConfig.state && (
             <div
               class="fixed w-screen h-screen top-0 bg-gray-950/70 left-0 z-50 flex justify-center items-center"
               onClick={dialogEvent}
@@ -44,9 +54,9 @@ export default defineComponent({
               </div>
               <img src={dialogConfig.photo} class="h-3/4" onClick={stop} />
             </div>
-          ) : null}
+          )}
 
-          {props.imgList?.map((i, k) => (
+          {props.imgList.map((i, k) => (
             <img
               src={i}
               alt="photo-view"
@@ -55,7 +65,7 @@ export default defineComponent({
             />
           ))}
         </div>
-      ) : null;
+      );
     };
   },
 });

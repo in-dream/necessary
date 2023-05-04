@@ -10,5 +10,10 @@
   "raving": "呓语",
   "follow": "关注我",
   "apropos": "事件",
-  "techStack": "技术栈"
+  "techStack": "技术栈",
+  "date": {
+    "year": "年",
+    "month": "月",
+    "day": "日"
+  }
 }

@@ -10,5 +10,10 @@
   "raving": "Raving",
   "follow": "Follow Me",
   "apropos": "Apropos",
-  "techStack": "Tech Stack"
+  "techStack": "Tech Stack",
+  "date": {
+    "year": "year",
+    "month": "month",
+    "day": "day"
+  }
 }
