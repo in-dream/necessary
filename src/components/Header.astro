@@ -1,14 +1,9 @@
 ---
-import {
-  InformationCircle,
-  PeopleCircle,
-  Bookmarks,
-  Compass,
-} from "@vicons/ionicons5";
-import Footer from "./Footer.astro";
-import { title } from "@consts";
-import HeaderLink from "./HeaderLink.astro";
-import { I18n } from "@utils/vue.entry";
+import { InformationCircle, PeopleCircle, Bookmarks, Compass } from '@vicons/ionicons5';
+import Footer from './Footer.astro';
+import { title } from '@consts';
+import HeaderLink from './HeaderLink.astro';
+import { I18n } from '@utils/vue.entry';
 const { t } = I18n.global;
 ---
 
@@ -30,7 +25,7 @@ const { t } = I18n.global;
           <HeaderLink>
             <a href="/" class="rounded-lg flex p-2 py-3">
               <Bookmarks class="w-7 pr-2" />
-              {t("nav.home")}
+              {t('nav.home')}
             </a>
           </HeaderLink>
         </li>
@@ -40,7 +35,7 @@ const { t } = I18n.global;
           <HeaderLink>
             <a href="/about" class="rounded-lg flex p-2 py-3">
               <InformationCircle class="w-7 pr-2" />
-              {t("nav.about")}
+              {t('nav.about')}
             </a>
           </HeaderLink>
         </li>
@@ -50,7 +45,7 @@ const { t } = I18n.global;
           <HeaderLink>
             <a href="/links" class="rounded-lg flex p-2 py-3">
               <PeopleCircle class="w-7 pr-2" />
-              {t("nav.links")}
+              {t('nav.links')}
             </a>
           </HeaderLink>
         </li>

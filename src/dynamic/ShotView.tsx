@@ -1,9 +1,9 @@
-import { defineComponent } from "vue";
-import { stack } from "@consts";
-import { I18n } from "@utils/vue.entry";
-const { t } = I18n.global;
+import { defineComponent } from 'vue';
+import { stack } from '@consts';
+import { useI18n } from 'vue-i18n';
 export default defineComponent({
   setup() {
+    const { t } = useI18n();
     return () => (
       <div class="p-8 text-sm text-slate-600 select-none">
         <div>{t('techStack')}</div>

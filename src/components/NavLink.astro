@@ -1,6 +1,6 @@
 ---
-import { CaretForward } from "@vicons/ionicons5";
-import { I18n } from "@utils/vue.entry";
+import { CaretForward } from '@vicons/ionicons5';
+import { I18n } from '@utils/vue.entry';
 const { t } = I18n.global;
 interface Props {
   title: String | undefined;
@@ -11,7 +11,7 @@ const { title } = Astro.props;
 <div
   class="flex text-sm items-center font-bold border-b px-6 py-4 border-gray-300/20 dark:border-slate-700/10 text-slate-500"
 >
-  <a href="/">{t("nav.home")}</a>
+  <a href="/">{t('nav.home')}</a>
   <CaretForward class="w-4 mx-2" />
   {title}
 </div>

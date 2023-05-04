@@ -1,37 +1,32 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Page from "@components/Page.astro";
-import { getCollection } from "astro:content";
-import Search from "@components/Search.astro";
-import Banner from "@components/Banner.astro";
-import Raving from "@components/Raving.astro";
-import Tools from "@components/Tools.astro";
-import ShotView from "@dynamic/ShotView";
-import Apropos from "@dynamic/Apropos";
-import { generateExcerpt } from "@utils/index";
-import { title } from "@consts";
+import Layout from '@layouts/Layout.astro';
+import Page from '@components/Page.astro';
+import { getCollection } from 'astro:content';
+import Search from '@components/Search.astro';
+import Banner from '@components/Banner.astro';
+import Raving from '@components/Raving.astro';
+import Tools from '@components/Tools.astro';
+import ShotView from '@dynamic/ShotView';
+import Apropos from '@dynamic/Apropos';
+import { generateExcerpt } from '@utils/index';
+import { title } from '@consts';
 export const getStaticPaths = async () => {
-  const posts = await getCollection("pages");
+  const posts = await getCollection('pages');
   return posts.map((post) => ({ params: { page: post.slug } }));
 };
-const posts = await getCollection("pages");
+const posts = await getCollection('pages');
 const { page } = Astro.params;
 const pageIndex = posts.findIndex((post) => post.slug === page);
 const description = generateExcerpt(posts[pageIndex].body);
 ---
 
-<Layout
-  title={posts[pageIndex].data.title + " - " + title}
-  description={description}
->
+<Layout title={posts[pageIndex].data.title + ' - ' + title} description={description}>
   <div class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70">
     <Search />
     <Banner />
     <Page post={posts[pageIndex]} />
   </div>
-  <div
-    class="bg-gray-100 row-span-1 md:min-lg:hidden dark:bg-slate-900/75 rounded-lr-lg"
-  >
+  <div class="bg-gray-100 row-span-1 md:min-lg:hidden dark:bg-slate-900/75 rounded-lr-lg">
     <Tools />
     <Raving />
     <ShotView />

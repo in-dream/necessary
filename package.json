@@ -13,7 +13,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "post": "node ./scripts/create.js"
+    "prettier": "prettier --config .prettierrc --write '**/*.{tsx,ts,astro,json}'"
   },
   "dependencies": {
     "@astrojs/mdx": "^0.19.0",

@@ -1,5 +1,5 @@
-import { defineCollection, z } from "astro:content";
-import { defaultCity } from "@consts";
+import { defineCollection, z } from 'astro:content';
+import { defaultCity } from '@consts';
 
 const times = defineCollection({
   schema: z.object({
@@ -9,7 +9,7 @@ const times = defineCollection({
       .string()
       .or(z.date())
       .transform((val) => new Date(val)),
-    background: z.string().default("./images/banner.jpeg"),
+    background: z.string().default('./images/banner.jpeg'),
   }),
 });
 
@@ -17,14 +17,14 @@ const pages = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    type:z.string().default("default"),
+    type: z.string().default('default'),
     links: z
       .array(
         z.object({
           url: z.string(),
           title: z.string(),
           desc: z.string(),
-        })
+        }),
       )
       .default([]),
   }),
@@ -45,7 +45,7 @@ const posts = defineCollection({
       .transform((str) => (str ? new Date(str) : undefined)),
     avatar: z.string().optional(),
     author: z.string(),
-    type: z.string().default("default"),
+    type: z.string().default('default'),
     music: z
       .object({
         name: z.string(),
@@ -54,14 +54,14 @@ const posts = defineCollection({
         url: z.string(),
       })
       .default({
-        name: "",
-        author: "",
-        avatar: "",
-        url: "",
+        name: '',
+        author: '',
+        avatar: '',
+        url: '',
       }),
     photo: z.array(z.string()).default([]),
     location: z.string().default(defaultCity),
-    category: z.string().default("default"),
+    category: z.string().default('default'),
   }),
 });
 

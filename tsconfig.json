@@ -1,7 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "lib": ["ES2015","ES6","DOM","ES2022.String"],
+    "lib": ["ES2015", "ES6", "DOM", "ES2022.String"],
     "strictNullChecks": true,
     "jsx": "preserve",
     "baseUrl": "src",

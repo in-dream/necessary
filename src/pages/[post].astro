@@ -1,35 +1,31 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import { getCollection } from "astro:content";
-import Search from "@components/Search.astro";
-import Banner from "@components/Banner.astro";
-import Raving from "@components/Raving.astro";
-import Tools from "@components/Tools.astro";
-import Post from "@components/Post.astro";
-import ShotView from "@dynamic/ShotView";
-import Apropos from "@dynamic/Apropos";
-import {generateExcerpt} from "@utils/index";
-import { title } from "@consts";
+import Layout from '@layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import Search from '@components/Search.astro';
+import Banner from '@components/Banner.astro';
+import Raving from '@components/Raving.astro';
+import Tools from '@components/Tools.astro';
+import Post from '@components/Post.astro';
+import ShotView from '@dynamic/ShotView';
+import Apropos from '@dynamic/Apropos';
+import { generateExcerpt } from '@utils/index';
+import { title } from '@consts';
 export const getStaticPaths = async () => {
-  const posts = await getCollection("posts");
+  const posts = await getCollection('posts');
   return posts.map((post) => ({ params: { post: post.slug } }));
 };
-const posts = await getCollection("posts");
+const posts = await getCollection('posts');
 const { post } = Astro.params;
 const pageIndex = posts.findIndex((i) => i.slug === post);
 const description = generateExcerpt(posts[pageIndex].body);
 ---
-<Layout
-  title={posts[pageIndex].data.title + " - " + title}
-  description={description}
->
+
+<Layout title={posts[pageIndex].data.title + ' - ' + title} description={description}>
   <div class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70">
     <Search />
     <Post post={posts[pageIndex]} />
   </div>
-  <div
-    class="bg-gray-100 row-span-1 md:min-lg:hidden dark:bg-slate-900/75 rounded-tr-lg"
-  >
+  <div class="bg-gray-100 row-span-1 md:min-lg:hidden dark:bg-slate-900/75 rounded-tr-lg">
     <Tools />
     <Raving />
     <ShotView />

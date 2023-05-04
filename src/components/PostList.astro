@@ -1,14 +1,14 @@
 ---
-import { LocationOutline } from "@vicons/ionicons5";
-import type { CollectionEntry } from "astro:content";
-import FormattedDate from "./FormattedDate.astro";
-import Player from "./Player.astro";
-import RenderContent from "./RenderContent.astro";
-import { DocumentText } from "@vicons/ionicons5";
-import PhotoView from "@dynamic/PhotoView";
-import { generateExcerpt,generateImageList } from "@utils/index";
+import { LocationOutline } from '@vicons/ionicons5';
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+import Player from './Player.astro';
+import RenderContent from './RenderContent.astro';
+import { DocumentText } from '@vicons/ionicons5';
+import PhotoView from '@dynamic/PhotoView';
+import { generateExcerpt, generateImageList } from '@utils/index';
 interface Props {
-  posts: CollectionEntry<"posts">[] | undefined;
+  posts: CollectionEntry<'posts'>[] | undefined;
 }
 const { posts } = Astro.props;
 ---
@@ -29,14 +29,12 @@ const { posts } = Astro.props;
           <div>
             <div class="flex justify-between">
               <div class="flex">
-                <img
-                  src={post.data.avatar}
-                  alt="avatars"
-                  class="w-12 h-12 rounded"
-                />
+                <img src={post.data.avatar} alt="avatars" class="w-12 h-12 rounded" />
                 <div class="pl-4 text-slate-500 flex flex-col justify-between">
                   <div class="text-sm font-bold">{post.data.author}</div>
-                  <div class="text-sm font-bold cursor-pointer"><a href={`/${post.slug}`}>{post.data.title}</a></div>
+                  <div class="text-sm font-bold cursor-pointer">
+                    <a href={`/${post.slug}`}>{post.data.title}</a>
+                  </div>
                 </div>
               </div>
               <div class="text-xs text-slate-500">
@@ -48,7 +46,7 @@ const { posts } = Astro.props;
                 {generateExcerpt(post.body)}
               </div>
               <div>
-                {post.data.type === "music" ? (
+                {post.data.type === 'music' ? (
                   <div class="pt-4 pl-16">
                     <Player {...post.data.music} />
                   </div>

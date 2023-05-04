@@ -1,18 +1,18 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import RenderContent from "./RenderContent.astro";
-import NavLink from "./NavLink.astro";
+import type { CollectionEntry } from 'astro:content';
+import RenderContent from './RenderContent.astro';
+import NavLink from './NavLink.astro';
 const { post } = Astro.props;
 
 interface Props {
-  post: CollectionEntry<"pages">;
+  post: CollectionEntry<'pages'>;
 }
 ---
 
 <article class="text-slate-600 dark:text-slate-500 select-none">
   <NavLink title={post.data.title} />
   {
-    post.data.type === "default" ? (
+    post.data.type === 'default' ? (
       <div class="text-sm px-6 py-2 mt-2">
         <RenderContent {...post} />
       </div>
@@ -22,11 +22,7 @@ interface Props {
           return (
             <a href={item.url} target="_blank">
               <div class="flex p-2 text-sm items-center bg-slate-100 dark:bg-slate-900 rounded overflow-hidden">
-                <img
-                  src={item.url + "favicon.ico"}
-                  alt="favicon"
-                  class="w-10 h-10 mr-3"
-                />
+                <img src={item.url + 'favicon.ico'} alt="favicon" class="w-10 h-10 mr-3" />
                 <div class="flex flex-col justify-between">
                   <div class="font-bold">{item.title}</div>
                   <div class="text-xs">{item.desc}</div>

@@ -1,11 +1,11 @@
-import type { App } from "vue";
-import { createI18n } from "vue-i18n";
-import messages from '@intlify/unplugin-vue-i18n/messages'
+import type { App } from 'vue';
+import { createI18n } from 'vue-i18n';
+import messages from '@intlify/unplugin-vue-i18n/messages';
 export const I18n = createI18n({
-  locale: "en",
+  locale: 'en',
   messages,
-  globalInjection:true,
-  legacy:false,
+  globalInjection: true,
+  legacy: false,
 });
 
 export default (app: App) => {
