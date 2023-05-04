@@ -5,12 +5,16 @@ const date = new Date();
 const year = date.getFullYear();
 const month = date.getMonth() + 1;
 const day = date.getDate();
-let num = ref(Math.floor(Math.random() * (0 - raving.length) + raving.length));
-let numChange = ()=>{
-    num.value = Math.floor(Math.random() * (0 - raving.length) + raving.length)
-}
+
 export default defineComponent({
   setup() {
+    let num = ref(0);
+    let numChange = () => {
+      num.value = Math.floor(
+        Math.random() * (0 - raving.length) + raving.length
+      );
+    };
+    
     return () => (
       <div class="px-8 text-sm text-slate-600 select-none">
         呓语
@@ -25,10 +29,14 @@ export default defineComponent({
               <div>
                 <div class="text-2xl">{day}</div>
                 <div class="text-sm">
-                  {year}/{month}
+                  <span>{year}</span>/<span>{month}</span>
                 </div>
               </div>
-              <div onClick={()=>{numChange()}}>
+              <div
+                onClick={() => {
+                  numChange();
+                }}
+              >
                 <RefreshOutline class="w-8 cursor-pointer" />
               </div>
             </div>

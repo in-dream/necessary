@@ -1,9 +1,11 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "lib": ["ES2015","ES6","DOM","ES2022.String"],
     "strictNullChecks": true,
     "jsx": "preserve",
     "baseUrl": "src",
+    "types": ["@intlify/unplugin-vue-i18n/messages"],
     "paths": {
       "@assets/*": ["assets/*"],
       "@config": ["config.ts"],
@@ -17,5 +19,5 @@
       "@dynamic/*": ["dynamic/*"],
       "@i18n/*": ["i18n/*"]
     }
-  },
+  }
 }

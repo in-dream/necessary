@@ -5,7 +5,7 @@ import { title, description } from "@consts";
 import Layout from "@layouts/Layout.astro";
 import Search from "@components/Search.astro";
 import Banner from "@components/Banner.astro";
-import Raving from "@components/Raving.astro";
+import Raving from "@dynamic/Raving";
 import Tools from "@components/Tools.astro";
 import ShotView from "@dynamic/ShotView";
 import Apropos from "@dynamic/Apropos";
@@ -27,9 +27,9 @@ const posts = (await getCollection("posts")).sort(
     class="bg-gray-100 row-span-1 md:min-lg:hidden dark:bg-slate-900/75 rounded-tr-lg"
   >
     <Tools />
-    <FollowMe />
-    <Raving />
-    <ShotView />
-    <Apropos />
+    <FollowMe client:load />
+    <Raving client:load />
+    <ShotView client:load />
+    <Apropos client:load />
   </div>
 </Layout>

@@ -1,18 +1,16 @@
 ---
 import { InvertMode,Language } from "@vicons/ionicons5";
-
+import I18nBtn from "@dynamic/I18nBtn";
 ---
 
 <div class="px-8 flex items-center h-20">
   <InvertMode
     id="themeToggle"
-    class="mr-6 w-6 dark:text-slate-400 text-slate-600 cursor-pointer dark:rotate-180 dark:transition transition"
+    class="w-6 dark:text-slate-400 text-slate-600 cursor-pointer dark:rotate-180 dark:transition transition"
   />
-  <Language class="w-6 dark:text-slate-400 text-slate-600 cursor-pointer i18n-btn" />
+  <I18nBtn client:load />
 </div>
 <script>
-  import { I18n } from "@utils/vue.entry";
-  const {locale} = I18n.global;
   const theme = (): string => {
     if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
       return localStorage.getItem("theme") ?? "";
@@ -48,4 +46,8 @@ import { InvertMode,Language } from "@vicons/ionicons5";
       document.documentElement.classList.add("dark");
     }
   };
+
+  document
+    .getElementById("themeToggle")
+    ?.addEventListener("click", handleToggleClick);
 </script>
