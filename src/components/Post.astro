@@ -5,14 +5,14 @@ import FormattedDate from './FormattedDate.astro';
 import Player from './Player.astro';
 import RenderContent from './RenderContent.astro';
 import PhotoView from '@dynamic/PhotoView';
-import NavLink from './NavLink.astro';
+import Breadcrumb from '@dynamic/Breadcrumb';
 interface Props {
   post: CollectionEntry<'posts'> | undefined;
 }
 const { post } = Astro.props;
 ---
 
-<NavLink title={post?.data.title} />
+<Breadcrumb title={post?.data.title} />
 <div class="p-4 gap-12 grid">
   {
     post != undefined ? (

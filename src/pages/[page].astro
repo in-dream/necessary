@@ -3,14 +3,10 @@ import Layout from '@layouts/Layout.astro';
 import Page from '@components/Page.astro';
 import { getCollection } from 'astro:content';
 import Search from '@components/Search.astro';
-import Banner from '@components/Banner.astro';
-import Raving from '@dynamic/Raving';
-import Tools from '@dynamic/Tools';
-import ShotView from '@dynamic/ShotView';
-import Apropos from '@dynamic/Apropos';
+import Banner from '@dynamic/Banner';
 import { generateExcerpt } from '@utils/index';
 import { title } from '@consts';
-import FollowMe from '@dynamic/FollowMe';
+import { banner } from '@consts';
 export const getStaticPaths = async () => {
   const posts = await getCollection('pages');
   return posts.map((post) => ({ params: { page: post.slug } }));
@@ -24,14 +20,7 @@ const description = generateExcerpt(posts[pageIndex].body);
 <Layout title={posts[pageIndex].data.title + ' - ' + title} description={description}>
   <div class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70">
     <Search />
-    <Banner />
+    <Banner banner={banner} />
     <Page post={posts[pageIndex]} />
-  </div>
-  <div class="bg-gray-100 row-span-1 md:min-lg:hidden dark:bg-slate-900/75 rounded-lr-lg">
-    <Tools client:load />
-    <FollowMe client:load />
-    <Raving client:load />
-    <ShotView client:load />
-    <Apropos client:load />
   </div>
 </Layout>

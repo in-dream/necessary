@@ -4,8 +4,9 @@ import { getCollection } from 'astro:content';
 import { title, description } from '@consts';
 import Layout from '@layouts/Layout.astro';
 import Search from '@components/Search.astro';
-import Banner from '@components/Banner.astro';
+import Banner from '@dynamic/Banner';
 import Sidebar from '@dynamic/Sidebar';
+import { banner } from '@consts';
 const posts = (await getCollection('posts')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
@@ -16,7 +17,7 @@ const posts = (await getCollection('posts')).sort(
     {/* Search */}
     <Search />
     {/* Banner */}
-    <Banner />
+    <Banner banner={banner} />
     <PostList posts={posts} />
   </div>
   <Sidebar client:load />

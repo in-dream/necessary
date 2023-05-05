@@ -1,5 +1,7 @@
 import { LogoGithub, Mail, LogoInstagram, LocationSharp } from '@vicons/ionicons5';
 import { TelegramPlane } from '@vicons/fa';
+import bgImageUrl from '@assets/images/banner.jpeg';
+import avatar from '@assets/images/avatar.jpg';
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
@@ -7,8 +9,8 @@ export const title = "NaCoLiu's Blog";
 export const description = 'Pry into whose life.';
 export const defaultCity = 'Unknown Region';
 export const banner = {
-  bgImageUrl: './images/banner.jpeg',
-  avatar: './avatar.jpg',
+  bgImageUrl: bgImageUrl,
+  avatar: avatar,
   name: 'NaCo',
   description: '失去最爱的一个.',
 };

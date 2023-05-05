@@ -25,6 +25,9 @@ dependencies:
   '@jridgewell/sourcemap-codec':
     specifier: ^1.4.15
     version: 1.4.15
+  '@nanostores/vue':
+    specifier: ^0.7.0
+    version: 0.7.0(nanostores@0.8.1)(vue@3.2.47)
   '@vicons/ionicons5':
     specifier: ^0.12.0
     version: 0.12.0
@@ -34,9 +37,9 @@ dependencies:
   astro:
     specifier: ^2.4.1
     version: 2.4.1(sass@1.62.1)
-  pinia:
-    specifier: ^2.0.35
-    version: 2.0.35(vue@3.2.47)
+  nanostores:
+    specifier: ^0.8.1
+    version: 0.8.1
   postcss:
     specifier: ^8.4.23
     version: 8.4.23
@@ -966,6 +969,21 @@ packages:
       vfile: 5.3.7
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@nanostores/vue@0.7.0(nanostores@0.8.1)(vue@3.2.47):
+    resolution: {integrity: sha512-xQiiMlj0dFTAgjxXahPQQcGit7HpTo/lHKwAXg8yRyC6IkoB55tCsRBbAouMLSB4bdBoCgCmuKWcv7MRX1t9Zw==}
+    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
+    peerDependencies:
+      '@vue/devtools-api': '>=6.1.4'
+      nanostores: '>=0.7.3'
+      vue: '>=3.2.30'
+    peerDependenciesMeta:
+      '@vue/devtools-api':
+        optional: true
+    dependencies:
+      nanostores: 0.8.1
+      vue: 3.2.47
     dev: false
 
   /@nodelib/fs.scandir@2.1.5:
@@ -3206,6 +3224,11 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  /nanostores@0.8.1:
+    resolution: {integrity: sha512-1ZCfQtII2XeFDrtqXL2cdQ/diGrLxzRB3YMyQjn8m7GSGQrJfGST2iuqMpWnS/ZlifhtjgR/SX0Jy6Uij6lRLA==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+    dev: false
+
   /nlcst-to-string@3.1.1:
     resolution: {integrity: sha512-63mVyqaqt0cmn2VcI2aH6kxe1rLAmSROqHMA0i4qqg1tidkfExgpb0FGMikMCn86mw5dFtBtEANfmSSK7TjNHw==}
     dependencies:
@@ -3405,23 +3428,6 @@ packages:
   /pify@4.0.1:
     resolution: {integrity: sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==}
     engines: {node: '>=6'}
-    dev: false
-
-  /pinia@2.0.35(vue@3.2.47):
-    resolution: {integrity: sha512-P1IKKQWhxGXiiZ3atOaNI75bYlFUbRxtJdhPLX059Z7+b9Z04rnTZdSY8Aph1LA+/4QEMAYHsTQ638Wfe+6K5g==}
-    peerDependencies:
-      '@vue/composition-api': ^1.4.0
-      typescript: '>=4.4.4'
-      vue: ^2.6.14 || ^3.2.0
-    peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
-      typescript:
-        optional: true
-    dependencies:
-      '@vue/devtools-api': 6.5.0
-      vue: 3.2.47
-      vue-demi: 0.14.0(vue@3.2.47)
     dev: false
 
   /pirates@4.0.5:

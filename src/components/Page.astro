@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import RenderContent from './RenderContent.astro';
-import NavLink from './NavLink.astro';
+import Breadcrumb from '@dynamic/Breadcrumb';
 const { post } = Astro.props;
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 ---
 
 <article class="text-slate-600 dark:text-slate-500 select-none">
-  <NavLink title={post.data.title} />
+  <Breadcrumb title={post.data.title} />
   {
     post.data.type === 'default' ? (
       <div class="text-sm px-6 py-2 mt-2">

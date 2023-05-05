@@ -1,19 +1,19 @@
 import { InvertMode } from '@vicons/ionicons5';
 import { defineComponent, onMounted } from 'vue';
-import { useThemeStore } from 'stores/Theme';
+import { useStore } from '@nanostores/vue';
+import { themeStore, onInit, toggleTheme } from 'stores/Theme';
 export default defineComponent({
   setup() {
-    const store = useThemeStore();
+    const theme = useStore(themeStore);
     onMounted(() => {
-      store.onInit();
+      onInit();
     });
-
     return () => (
       <div
         class={`cursor-pointer transition transform ${
-          store.theme === 'light' ? '' : 'rotate-180'
+          theme.value === 'light' ? '' : 'rotate-180'
         } text-slate-500 dark:text-slate-400`}
-        onClick={store.toggleTheme}
+        onClick={toggleTheme}
       >
         <InvertMode class="w-6" />
       </div>
