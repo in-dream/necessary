@@ -1,5 +1,6 @@
 import { defineComponent } from 'vue';
 import { Heart, ShareSocial } from '@vicons/ionicons5';
+import {Comments} from '@vicons/fa'
 import { useClipboard } from '@vueuse/core';
 import { useI18n } from 'vue-i18n';
 export default defineComponent({
@@ -34,7 +35,7 @@ export default defineComponent({
               </div>
             </div>
           </div>
-          <div class="">3</div>
+          <div class="flex cursor-pointer"><Comments  class="w-4 mr-2"/>{2}</div>
         </div>
       </div>
     );

@@ -7,6 +7,7 @@ import Banner from '@dynamic/Banner';
 import { generateExcerpt } from '@utils/index';
 import { title } from '@consts';
 import { banner } from '@consts';
+import Sidebar from '@dynamic/Sidebar';
 export const getStaticPaths = async () => {
   const posts = await getCollection('pages');
   return posts.map((post) => ({ params: { page: post.slug } }));
@@ -23,4 +24,5 @@ const description = generateExcerpt(posts[pageIndex].body);
     <Banner banner={banner} />
     <Page post={posts[pageIndex]} />
   </div>
+  <Sidebar client:load />
 </Layout>

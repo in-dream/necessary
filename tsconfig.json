@@ -17,7 +17,8 @@
       "@utils/*": ["utils/*"],
       "@consts": ["consts.ts"],
       "@dynamic/*": ["dynamic/*"],
-      "@i18n/*": ["i18n/*"]
+      "@i18n/*": ["i18n/*"],
+      "@stores/*":["stores/*"]
     }
   }
 }
