@@ -11,7 +11,7 @@ export default defineComponent({
     return () => (
       <div
         class={`cursor-pointer transition transform ${
-          theme.value === 'light' ? '' : 'rotate-180'
+          theme.value === 'light' ? 'rotate-180' : ''
         } text-slate-500 dark:text-slate-400`}
         onClick={toggleTheme}
       >

@@ -13,7 +13,6 @@ export default defineComponent({
     const source = props.url;
     const { t } = useI18n();
     const { copy, copied } = useClipboard({ source });
-    console.log(source);
     return () => (
       <div class="text-xs text-slate-400  pl-16 mt-3">
         <div class="bg-slate-400/10 rounded flex  justify-between items-center px-4 py-2">
