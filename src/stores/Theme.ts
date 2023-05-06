@@ -1,6 +1,6 @@
 import { atom } from 'nanostores';
 
-export const themeStore = atom<string>('');
+export const themeStore = atom<string>('light');
 
 export const getTheme = () => {
   const prefersDarkMode = matchMedia('(prefers-color-scheme: dark)').matches;

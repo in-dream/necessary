@@ -60,7 +60,7 @@
                         <xsl:for-each select="/rss/channel/item">
                             <div>
                                 <h3>
-                                    <a target="_blank" class="text-base inline-block underline">
+                                    <a target="_blank" class="text-sm inline-block underline mb-1">
                                         <xsl:attribute name="href">
                                             <xsl:value-of select="link" />
                                         </xsl:attribute>
