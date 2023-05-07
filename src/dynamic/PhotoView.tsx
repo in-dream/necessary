@@ -1,6 +1,7 @@
 import { PropType, defineComponent, reactive, watch } from 'vue';
 import { Close, ArrowBack, ArrowForward } from '@vicons/ionicons5';
 import { useMagicKeys } from '@vueuse/core';
+
 interface DialogConfig {
   state: boolean;
   photoKey: number;
@@ -15,21 +16,10 @@ export default defineComponent({
   },
   setup(props) {
     const { escape, arrowleft, arrowright } = useMagicKeys();
-
     const dialogConfig = reactive<DialogConfig>({
       state: false,
       photoKey: 0,
     });
-
-    watch(
-      () => escape.value,
-      (v) => {
-        if (v && dialogConfig.state) dialogConfig.state = false;
-      },
-      {
-        deep: true,
-      },
-    );
 
     const dialogPhoto = (photo: number) => {
       dialogConfig.state = true;
@@ -42,27 +32,31 @@ export default defineComponent({
       dialogConfig.state = false;
     };
 
-    const stop = (event: Event) => {
+    const stopExtendFunc = (event: Event, func: Function = () => {}) => {
       event.stopPropagation();
+      func();
     };
 
-    const prevPhoto = (event: Event) => {
-      event.stopPropagation();
-      if (dialogConfig.photoKey === props.imgList.length - 1) {
-        dialogConfig.photoKey = 0;
-      } else {
-        dialogConfig.photoKey++;
-      }
+    const prevPhoto = () => {
+      dialogConfig.photoKey =
+        (dialogConfig.photoKey + props.imgList.length - 1) % props.imgList.length;
     };
 
-    const nextPhoto = (event: Event) => {
-      event.stopPropagation();
-      if (dialogConfig.photoKey === 0) {
-        dialogConfig.photoKey = props.imgList.length - 1;
-      } else {
-        dialogConfig.photoKey--;
-      }
+    const nextPhoto = () => {
+      dialogConfig.photoKey = (dialogConfig.photoKey + 1) % props.imgList.length;
     };
+
+    watch(
+      reactive({ escape, arrowleft, arrowright }),
+      (v) => {
+        if (v.escape) dialogEvent();
+        if (v.arrowleft) prevPhoto();
+        if (v.arrowright) nextPhoto();
+      },
+      {
+        deep: true,
+      },
+    );
 
     return () => {
       if (!props.imgList.length) return null;
@@ -76,7 +70,7 @@ export default defineComponent({
             >
               <div
                 class="w-10 h-10 bg-black/40 text-white flex justify-center items-center cursor-pointer absolute left-0"
-                onClick={prevPhoto}
+                onClick={(e) => stopExtendFunc(e, prevPhoto)}
               >
                 <ArrowBack class="w-6" />
               </div>
@@ -88,10 +82,14 @@ export default defineComponent({
                   <Close class="w-4" />
                 </div>
               </div>
-              <img src={props.imgList[dialogConfig.photoKey]} class="h-3/4" onClick={stop} />
+              <img
+                src={props.imgList[dialogConfig.photoKey]}
+                class="h-3/4"
+                onClick={stopExtendFunc}
+              />
               <div
                 class="w-10 h-10  bg-black/40 text-white flex justify-center items-center cursor-pointer absolute right-0"
-                onClick={nextPhoto}
+                onClick={(e) => stopExtendFunc(e, nextPhoto)}
               >
                 <ArrowForward class="w-6" />
               </div>
