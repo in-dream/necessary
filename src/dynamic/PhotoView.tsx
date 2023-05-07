@@ -14,7 +14,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const { escape } = useMagicKeys();
+    const { escape, arrowleft, arrowright } = useMagicKeys();
 
     const dialogConfig = reactive<DialogConfig>({
       state: false,

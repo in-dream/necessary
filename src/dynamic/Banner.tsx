@@ -14,7 +14,7 @@ export default defineComponent({
       default: () => {},
     },
   },
-  setup(props, { slots }) {
+  setup(props) {
     const banner = props.banner;
     return () => (
       <div class="h-52 flex justify-center items-center overflow-hidden relative select-none">

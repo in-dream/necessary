@@ -13,7 +13,7 @@ export default defineComponent({
               const src = `https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/${i}/${i}.png`;
               return (
                 <div class="w-10 h-10 rounded bg-slate-200 dark:bg-slate-800 flex items-center justify-center animate-[linear-rolling_25s_linear_infinite]">
-                  <img src={src} class="w-7 h-7" />
+                  <img src={src} class="w-7 h-7" alt={i} />
                 </div>
               );
             })}
