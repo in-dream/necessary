@@ -13,7 +13,6 @@ interface Props {
 const { posts } = Astro.props;
 
 const basicUrl = Astro.site?.href;
-
 ---
 
 <div class="p-4 gap-12 grid">
@@ -60,7 +59,7 @@ const basicUrl = Astro.site?.href;
                 <LocationOutline class="w-4 mr-1 text-slate-500/70" />
                 {post.data.location}
               </div>
-              <PostListBar client:load url={`${basicUrl}`+ post.slug} />
+              <PostListBar client:load url={`${basicUrl}` + post.slug} />
             </div>
           </div>
         </article>

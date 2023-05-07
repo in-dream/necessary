@@ -18,7 +18,7 @@ export const changeTheme = (theme: string) => {
 };
 export const onInit = () => {
   const theme = getTheme();
-  changeTheme(theme)
+  changeTheme(theme);
 };
 export const toggleTheme = () => {
   changeTheme(themeStore.get() === 'light' ? 'dark' : 'light');
