@@ -1,7 +1,7 @@
 import { RefreshOutline } from '@vicons/ionicons5';
 import { defineComponent, ref } from 'vue';
 import { raving } from '@consts';
-import { useI18n } from 'vue-i18n';
+
 import { banner } from '@consts';
 const getDate = () => {
   const date = new Date();
@@ -13,7 +13,6 @@ const getDate = () => {
 
 export default defineComponent({
   setup() {
-    const { t } = useI18n();
     const { year, month, day } = getDate();
     const num = ref(0);
     const numChange = () => {
@@ -22,7 +21,7 @@ export default defineComponent({
 
     return () => (
       <div class="px-8 text-sm text-slate-600 select-none">
-        {t('raving')}
+        呓语
         <div class="w-full h-36 bg-slate600 mt-5 rounded overflow-hidden relative">
           <img src={banner.bgImageUrl} alt="background" class="brightness-50 filter" />
           <div class="absolute top-0 text-white/80 w-full h-full p-5">

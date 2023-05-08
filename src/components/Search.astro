@@ -1,7 +1,5 @@
 ---
 import { Search as SearchIcon } from '@vicons/ionicons5';
-import { I18n } from '@utils/vue.entry';
-const { t } = I18n.global;
 ---
 
 <div class="h-20 flex items-center pl-4 border-b border-gray-300/20 dark:border-slate-700/10">
@@ -10,7 +8,7 @@ const { t } = I18n.global;
   >
     <div class="flex">
       <div class="pl-2 flex">
-        <div>{t('header.post')}</div><span class="text-slate-300 px-2 dark:text-slate-600">|</span>
+        <div>Post</div><span class="text-slate-300 px-2 dark:text-slate-600">|</span>
       </div>
       <input
         type="text"

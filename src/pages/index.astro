@@ -20,5 +20,4 @@ const posts = (await getCollection('posts')).sort(
     <Banner banner={banner} />
     <PostList posts={posts} />
   </div>
-  <Sidebar client:load />
 </Layout>

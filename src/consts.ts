@@ -28,21 +28,6 @@ export const raving = [
   '那些幼稚的轻狂的勇敢的，从此收着。',
 ];
 
-export const stack = [
-  'vue',
-  'react',
-  'flutter',
-  'nodejs',
-  'python',
-  'dart',
-  'javascript',
-  'typescript',
-  'html',
-  'css',
-  'angular',
-  'php',
-];
-
 export const countdown = [
   {
     date: '2022/8/24',
