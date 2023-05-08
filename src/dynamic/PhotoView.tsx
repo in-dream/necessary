@@ -69,7 +69,7 @@ export default defineComponent({
               onClick={dialogEvent}
             >
               <div
-                class="w-10 h-10 bg-black/40 text-white flex justify-center items-center cursor-pointer absolute left-0"
+                class="w-10 h-10 bg-black/5 text-white flex justify-center items-center cursor-pointer absolute left-0"
                 onClick={(e) => stopExtendFunc(e, prevPhoto)}
               >
                 <ArrowBack class="w-6" />
@@ -79,7 +79,7 @@ export default defineComponent({
                   class="w-12 h-8  bg-slate-900/75 text-white flex items-center justify-center cursor-pointer"
                   onClick={dialogEvent}
                 >
-                  <Close class="w-4" />
+                  <Close class="w-6" />
                 </div>
               </div>
               <img
@@ -88,7 +88,7 @@ export default defineComponent({
                 onClick={stopExtendFunc}
               />
               <div
-                class="w-10 h-10  bg-black/40 text-white flex justify-center items-center cursor-pointer absolute right-0"
+                class="w-10 h-10 bg-black/5 text-white flex justify-center items-center cursor-pointer absolute right-0"
                 onClick={(e) => stopExtendFunc(e, nextPhoto)}
               >
                 <ArrowForward class="w-6" />
