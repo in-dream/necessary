@@ -6,8 +6,8 @@ import Post from '@components/Post.astro';
 import { generateExcerpt } from '@utils/index';
 import { title } from '@consts';
 import Banner from '@dynamic/Banner';
-import Sidebar from '@dynamic/Sidebar';
 import { banner } from '@consts';
+import { getImageByPost } from '@utils/index';
 export const prerender = true;
 export const getStaticPaths = async () => {
   const posts = await getCollection('posts');
@@ -17,12 +17,18 @@ const posts = await getCollection('posts');
 const { post } = Astro.params;
 const pageIndex = posts.findIndex((i) => i.slug === post);
 const description = generateExcerpt(posts[pageIndex].body);
+
+const bannerData = {
+  bgImageUrl: getImageByPost(posts[pageIndex].body) ?getImageByPost(posts[pageIndex].body) : banner.bgImageUrl,
+  title: posts[pageIndex].data.title,
+  description: description,
+};
 ---
 
 <Layout title={posts[pageIndex].data.title + ' - ' + title} description={description}>
   <div class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70">
     <Search />
-    <Banner banner={banner} />
+    <Banner banner={bannerData} type="post" client:load />
     <Post post={posts[pageIndex]} />
   </div>
 </Layout>

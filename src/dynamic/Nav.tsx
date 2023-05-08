@@ -23,11 +23,11 @@ export default defineComponent({
               {navigate.map((i) => (
                 <li
                   class={`rounded hover:bg-slate-400 hover:text-white cursor-pointer dark:hover:bg-slate-600/25 ${
-                    routerPath === i.url ? 'bg-slate-400 dark:bg-slate-600/25' : ''
+                    routerPath === i.url ? 'bg-slate-400 text-white dark:bg-slate-600/25' : ''
                   }`}
                 >
-                  <a href={i.url} class="rounded-lg flex p-2 py-3">
-                    {h(i.icon, { class: 'w-5 h-5 mr-2 text-slate-500' })}
+                  <a href={i.url} class="rounded-lg flex items-center p-3 py-3">
+                    {h(i.icon, { class: 'w-5 h-5 mr-3' })}
                     {i.title}
                   </a>
                 </li>
