@@ -2117,7 +2117,10 @@ packages:
       {
         integrity: sha512-tUkiguQGW7S3IhB7N+c2MV/HZPSCPAAiYBZXLsBhFB/PCy6ZKKsZrmBayHV9fdGV/ARIfJ14NkxKzRDjvp7L6w==,
       }
-    engines: { node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7 }
+    engines:
+      {
+        node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7,
+      }
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001486
@@ -4665,7 +4668,8 @@ packages:
       {
         integrity: sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==,
       }
-    engines: { node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1 }
+    engines:
+      { node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1 }
     hasBin: true
 
   /nanostores@0.8.1:
@@ -5135,7 +5139,8 @@ packages:
       {
         integrity: sha512-kt9wk33J7HvFGwFaHb8piwy4zbUmabC8Nu+qCw493jhe96YkpjscqGBPy4nJ9TPy9pd7+kEx1zM81rp+MIdrXg==,
       }
-    engines: { node: ^14.15.0 || >=16.0.0, pnpm: '>=7.14.0' }
+    engines:
+      { node: ^14.15.0 || >=16.0.0, pnpm: '>=7.14.0' }
     dependencies:
       '@astrojs/compiler': 1.4.1
       prettier: 2.8.8

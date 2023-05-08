@@ -1,4 +1,9 @@
-import { LogoGithub, Mail, LogoInstagram, LocationSharp } from '@vicons/ionicons5';
+import {
+  LogoGithub,
+  Mail,
+  LogoInstagram,
+  LocationSharp,
+} from '@vicons/ionicons5';
 import { TelegramPlane } from '@vicons/fa';
 import bgImageUrl from '@assets/images/banner.jpeg';
 import avatar from '@assets/images/avatar.jpg';

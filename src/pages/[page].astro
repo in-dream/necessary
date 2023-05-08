@@ -7,7 +7,6 @@ import Banner from '@dynamic/Banner';
 import { generateExcerpt } from '@utils/index';
 import { title } from '@consts';
 import { banner } from '@consts';
-import Sidebar from '@dynamic/Sidebar';
 
 export const prerender = true;
 export const getStaticPaths = async () => {
@@ -22,8 +21,10 @@ const description = generateExcerpt(posts[pageIndex].body);
 
 <Layout title={posts[pageIndex].data.title + ' - ' + title} description={description}>
   <div class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70">
-    <Search />
-    <Banner banner={banner} />
+    <div data-turbo-permanent id="header">
+      <Search />
+      <Banner banner={banner} />
+    </div>
     <Page post={posts[pageIndex]} />
   </div>
 </Layout>

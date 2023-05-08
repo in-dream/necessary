@@ -15,9 +15,9 @@ export default defineComponent({
       <div class="bg-gray-100 row-span-1 md:min-lg:hidden dark:bg-slate-900/75 rounded-tr-lg h-full ">
         <Tools />
         <div class="flex flex-col gap-8">
-        <FollowMe />
-        <Raving />
-        <Apropos />
+          <FollowMe />
+          <Raving />
+          <Apropos />
         </div>
       </div>
     );

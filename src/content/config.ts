@@ -43,7 +43,9 @@ const posts = defineCollection({
     updatedDate: z
       .string()
       .optional()
-      .transform((str) => (str ? new Date(str) : undefined)),
+      .transform((str) =>
+        str ? new Date(str) : undefined,
+      ),
     avatar: z.string().optional(),
     author: z.string(),
     type: z.string().default('default'),
@@ -66,4 +68,8 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { posts, pages, times };
+export const collections = {
+  posts,
+  pages,
+  times,
+};

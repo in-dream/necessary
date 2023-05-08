@@ -25,21 +25,7 @@ html {
   body {
     font-family: 'code', 'sans', sans-serif;
     &::-webkit-scrollbar {
-      background-color: rgb(255, 255, 255);
-      width: 3px;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: rgb(154, 175, 184);
-    }
-  }
-  &[class='dark'] {
-    body {
-      &::-webkit-scrollbar {
-        background-color: #0f172af2;
-      }
-      &::-webkit-scrollbar-thumb {
-        background-color: #0f172af2;
-      }
+      width: 0;
     }
   }
 }

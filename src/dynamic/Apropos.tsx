@@ -26,7 +26,9 @@ export default defineComponent({
                 </div>
                 <div class="col-span-2 flex flex-col items-end pr-4 justify-end pb-3">
                   <div>
-                    <span class="text-3xl font-bold pr-2">{dateDiff(i.data.date)}</span>
+                    <span class="text-3xl font-bold pr-2">
+                      {dateDiff(i.data.date)}
+                    </span>
                     Day
                   </div>
                   <div>{i.data.title}</div>
