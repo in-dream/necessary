@@ -25,3 +25,8 @@ export const generateImageList = (content: string) => {
   }
   return imageList;
 };
+
+export const getDefaultBg = async () => {
+  const res = await import('@assets/images/times.jpg');
+  return res.default;
+};

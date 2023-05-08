@@ -4,9 +4,12 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import vue from '@astrojs/vue';
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
+import node from '@astrojs/node';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'http://localhost:3000/',
+  output: 'server',
   vite: {
     plugins: [
       VueI18nPlugin({
@@ -31,4 +34,7 @@ export default defineConfig({
     }),
     tailwind(),
   ],
+  adapter: node({
+    mode: 'standalone',
+  }),
 });

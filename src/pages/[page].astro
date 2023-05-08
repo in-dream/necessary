@@ -8,6 +8,8 @@ import { generateExcerpt } from '@utils/index';
 import { title } from '@consts';
 import { banner } from '@consts';
 import Sidebar from '@dynamic/Sidebar';
+
+export const prerender = true;
 export const getStaticPaths = async () => {
   const posts = await getCollection('pages');
   return posts.map((post) => ({ params: { page: post.slug } }));

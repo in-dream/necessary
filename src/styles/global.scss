@@ -1,29 +1,29 @@
 @font-face {
-  font-family: "code";
-  src: url("../assets/fonts/code.woff2");
+  font-family: 'code';
+  src: url('../assets/fonts/code.woff2');
   font-weight: normal;
 }
 
 @font-face {
-  font-family: "sans";
-  src: url("../assets/fonts/Sans-Regular.woff2");
+  font-family: 'sans';
+  src: url('../assets/fonts/Sans-Regular.woff2');
   font-weight: normal;
 }
 
 @font-face {
-  font-family: "sans";
-  src: url("../assets/fonts/Sans-Medium.woff2");
+  font-family: 'sans';
+  src: url('../assets/fonts/Sans-Medium.woff2');
   font-weight: bold;
 }
 
 @font-face {
-  font-family: "neue";
-  src: url("../assets/fonts/BebasNeue-Regular.ttf");
+  font-family: 'neue';
+  src: url('../assets/fonts/BebasNeue-Regular.ttf');
 }
 
 html {
   body {
-    font-family: "code", "sans", sans-serif;
+    font-family: 'code', 'sans', sans-serif;
     &::-webkit-scrollbar {
       background-color: rgb(255, 255, 255);
       width: 3px;
@@ -32,7 +32,7 @@ html {
       background-color: rgb(154, 175, 184);
     }
   }
-  &[class="dark"] {
+  &[class='dark'] {
     body {
       &::-webkit-scrollbar {
         background-color: #0f172af2;

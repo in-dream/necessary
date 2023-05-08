@@ -9,7 +9,6 @@ An Astro-based theme for quickly building a blog.
 ![necessary](https://img.shields.io/github/last-commit/nacoliu/necessary?color=%230f172af2&style=for-the-badge)
 ![necessary](https://img.shields.io/github/package-json/v/nacoliu/necessary/main?style=for-the-badge&color=%230f172af2)
 
-
 ![alt preview](https://raw.githubusercontent.com/NaCoLiu/necessary/main/preview.jpg)
 
 ## Features
@@ -20,7 +19,7 @@ An Astro-based theme for quickly building a blog.
 - Music genre articles and online play
 - Multi-picture type articles
 - Generate QR code online
--   location information
+- location information
 
 ## Code Features
 

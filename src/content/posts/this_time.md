@@ -1,12 +1,12 @@
 ---
-title: "此刻感悟"
-description: ""
-date: "2023/4/21"
-avatar: "/avatar.jpg"
-author: "NaCo"
-type: "default"
-location: "Sentosa · Singapore"
-category: "某刻" 
+title: '此刻感悟'
+description: ''
+date: '2023/4/21'
+avatar: '/avatar.jpg'
+author: 'NaCo'
+type: 'default'
+location: 'Sentosa · Singapore'
+category: '某刻'
 ---
 
 在窗边吹了一夜风，看着天蒙蒙至天明，上一次这样还是冬季。

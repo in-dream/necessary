@@ -1,5 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { defaultCity } from '@consts';
+import { getDefaultBg } from '@utils/index';
 
 const times = defineCollection({
   schema: z.object({
@@ -9,7 +10,7 @@ const times = defineCollection({
       .string()
       .or(z.date())
       .transform((val) => new Date(val)),
-    background: z.string().default('./images/banner.jpeg'),
+    background: z.string().default(await getDefaultBg()),
   }),
 });
 
