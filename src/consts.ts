@@ -7,6 +7,7 @@ import {
 import { TelegramPlane } from '@vicons/fa';
 import bgImageUrl from '@assets/images/banner.jpeg';
 import avatar from '@assets/images/avatar.jpg';
+
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 

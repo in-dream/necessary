@@ -11,7 +11,9 @@ import { getImageByPost } from '@utils/index';
 export const prerender = true;
 export const getStaticPaths = async () => {
   const posts = await getCollection('posts');
-  return posts.map((post) => ({ params: { post: post.slug } }));
+  return posts.map((post) => ({
+    params: { post: post.slug },
+  }));
 };
 const posts = await getCollection('posts');
 const { post } = Astro.params;
@@ -27,12 +29,21 @@ const bannerData = {
 };
 ---
 
-<Layout title={posts[pageIndex].data.title + ' - ' + title} description={description}>
-  <div class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70">
-    <div data-turbo-permanent id="banner">
+<Layout
+  title={posts[pageIndex].data.title + ' - ' + title}
+  description={description}
+>
+  <div
+    class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70"
+  >
+    <div data-turbo-permanent id="search">
       <Search />
-      <Banner banner={bannerData} type="post" client:load />
     </div>
+    <div data-turbo-permanent id="banner">
+      <Banner banner={bannerData} />
+    </div>
+    <div data-turn-enter data-turn-exit > 
     <Post post={posts[pageIndex]} />
+    </div>
   </div>
 </Layout>

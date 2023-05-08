@@ -11,20 +11,34 @@ import { banner } from '@consts';
 export const prerender = true;
 export const getStaticPaths = async () => {
   const posts = await getCollection('pages');
-  return posts.map((post) => ({ params: { page: post.slug } }));
+  return posts.map((post) => ({
+    params: { page: post.slug },
+  }));
 };
 const posts = await getCollection('pages');
 const { page } = Astro.params;
-const pageIndex = posts.findIndex((post) => post.slug === page);
+const pageIndex = posts.findIndex(
+  (post) => post.slug === page,
+);
 const description = generateExcerpt(posts[pageIndex].body);
 ---
 
-<Layout title={posts[pageIndex].data.title + ' - ' + title} description={description}>
-  <div class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70">
-    <div data-turbo-permanent id="header">
+<Layout
+  title={posts[pageIndex].data.title + ' - ' + title}
+  description={description}
+>
+  <div
+    class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70"
+  >
+    <div data-turbo-permanent id="search">
       <Search />
-      <Banner banner={banner} />
     </div>
-    <Page post={posts[pageIndex]} />
+    <div data-turbo-permanent id="banner">
+      <Banner banner={banner} client:only="vue" />
+    </div>
+    
+    <div data-turn-enter>
+      <Page post={posts[pageIndex]} />
+    </div>
   </div>
 </Layout>

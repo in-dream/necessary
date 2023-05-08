@@ -34,3 +34,12 @@ declare module '*.avif' {
   const src: string;
   export default src;
 }
+
+declare module '@domchristie/turn' {
+  export declare function start(): void;
+  export declare const config: {
+    experimental: {
+      viewTransitions: boolean;
+    };
+  };
+}

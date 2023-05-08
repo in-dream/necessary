@@ -13,11 +13,17 @@ const posts = (await getCollection('posts')).sort(
 ---
 
 <Layout title={title} description={description}>
-  <div class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70">
-    {/* Search */}
-    <Search />
-    {/* Banner */}
-    <Banner banner={banner} />
-    <PostList posts={posts} />
+  <div
+    class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70"
+  >
+    <div data-turbo-permanent id="search">
+      <Search />
+    </div>
+    <div data-turbo-permanent id="banner">
+      <Banner banner={banner} client:only="vue" />
+    </div>
+    <div data-turn-enter>
+      <PostList posts={posts} />
+    </div>
   </div>
 </Layout>
