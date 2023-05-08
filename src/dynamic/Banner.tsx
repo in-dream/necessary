@@ -4,7 +4,7 @@ interface Banner {
   bgImageUrl: string;
   name: string;
   description: string;
-  avatar: string;
+  avatar?: string;
 }
 
 export default defineComponent({
@@ -24,7 +24,7 @@ export default defineComponent({
             <div>{banner.name}</div>
             <div class="text-xs pt-2 font-bold">{banner.description}</div>
           </div>
-          <img src={banner.avatar} alt="avatars" class="w-14 rounded" />
+          {banner.avatar ? <img src={banner.avatar} alt="avatars" class="w-14 rounded" /> : null}
         </div>
       </div>
     );
