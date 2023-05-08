@@ -2,7 +2,7 @@ import { PropType, defineComponent } from 'vue';
 
 interface Banner {
   bgImageUrl: string;
-  name: string;
+  title: string;
   description: string;
   avatar?: string;
 }
@@ -21,7 +21,7 @@ export default defineComponent({
         <img src={banner.bgImageUrl} alt="banner-img" class="object-cover scale-105 filter" />
         <div class="absolute right-10 bottom-5 flex items-center">
           <div class="text-white text-right pr-3">
-            <div>{banner.name}</div>
+            <div>{banner.title}</div>
             <div class="text-xs pt-2 font-bold">{banner.description}</div>
           </div>
           {banner.avatar ? <img src={banner.avatar} alt="avatars" class="w-14 rounded" /> : null}

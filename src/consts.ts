@@ -11,7 +11,7 @@ export const defaultCity = 'Unknown Region';
 export const banner = {
   bgImageUrl: bgImageUrl,
   avatar: avatar,
-  name: 'NaCo',
+  title: 'NaCo',
   description: '失去最爱的一个.',
 };
 export const raving = [
