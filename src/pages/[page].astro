@@ -13,31 +13,31 @@ import {
 } from '@utils/index';
 export const prerender = true;
 export const getStaticPaths = async () => {
-  const posts = await getCollection('pages');
-  return posts.map((post) => ({
+  const pages = await getCollection('pages');
+  return pages.map((post) => ({
     params: { page: post.slug },
   }));
 };
-const posts = await getCollection('pages');
+const pages = await getCollection('pages');
 const { page } = Astro.params;
-const pageIndex = posts.findIndex(
-  (post) => post.slug === page,
+const pageIndex = pages.findIndex(
+  (item) => item.slug === page,
 );
-const description = generateExcerpt(posts[pageIndex].body);
+const description = generateExcerpt(pages[pageIndex].body);
 
 const bannerData = {
-  bgImageUrl: getImageByPost(posts[pageIndex].body)
-    ? getImageByPost(posts[pageIndex].body)
+  bgImageUrl: getImageByPost(pages[pageIndex].body)
+    ? getImageByPost(pages[pageIndex].body)
     : banner.bgImageUrl,
-  title: posts[pageIndex].data.title,
+  title: pages[pageIndex].data.title,
   description:
-    posts[pageIndex].data.description ?? description,
+  pages[pageIndex].data.description ?? description,
 };
 ---
 
 <Layout
-  title={posts[pageIndex].data.title + ' - ' + title}
-  description={posts[pageIndex].data.description ??
+  title={pages[pageIndex].data.title + ' - ' + title}
+  description={pages[pageIndex].data.description ??
     description}
 >
   <div
@@ -51,7 +51,7 @@ const bannerData = {
     </div>
 
     <div data-turn-enter>
-      <Page post={posts[pageIndex]} />
+      <Page post={pages[pageIndex]} />
     </div>
   </div>
 </Layout>
