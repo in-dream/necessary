@@ -1,6 +1,7 @@
 ---
 import BaseHead from '@components/BaseHead.astro';
 import Nav from '@dynamic/Nav';
+import Sidebar from '@dynamic/Sidebar';
 
 interface Props {
   title: string;
@@ -8,18 +9,33 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+
+const url = Astro.url.pathname;
 ---
 
 <html lang="zh">
   <head>
     <BaseHead title={title} description={description} />
+   
   </head>
 
   <body class="dark:bg-slate-900/95">
-    <div class="pt-12 w-screen grid grid-cols-4 max-w-7xl m-auto min-h-screen">
+    <div
+      class="pt-12 w-screen grid grid-cols-4 max-w-7xl m-auto min-h-screen"
+    >
       {/* Navigation */}
-      <Nav client:load />
+      <Nav routerPath={url} />
       <slot />
+      <div data-turbo-permanent id="sidebar">
+        <Sidebar client:only="vue" />
+      </div>
     </div>
+    <script>
+      import * as Turbo from '@hotwired/turbo';
+      import Turn from '@domchristie/turn';
+      Turn.start();
+      Turn.config.experimental.viewTransitions = true;
+      Turbo.start();
+    </script>
   </body>
 </html>

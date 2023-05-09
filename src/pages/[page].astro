@@ -7,22 +7,38 @@ import Banner from '@dynamic/Banner';
 import { generateExcerpt } from '@utils/index';
 import { title } from '@consts';
 import { banner } from '@consts';
-import Sidebar from '@dynamic/Sidebar';
+
+export const prerender = true;
 export const getStaticPaths = async () => {
   const posts = await getCollection('pages');
-  return posts.map((post) => ({ params: { page: post.slug } }));
+  return posts.map((post) => ({
+    params: { page: post.slug },
+  }));
 };
 const posts = await getCollection('pages');
 const { page } = Astro.params;
-const pageIndex = posts.findIndex((post) => post.slug === page);
+const pageIndex = posts.findIndex(
+  (post) => post.slug === page,
+);
 const description = generateExcerpt(posts[pageIndex].body);
 ---
 
-<Layout title={posts[pageIndex].data.title + ' - ' + title} description={description}>
-  <div class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70">
-    <Search />
-    <Banner banner={banner} />
-    <Page post={posts[pageIndex]} />
+<Layout
+  title={posts[pageIndex].data.title + ' - ' + title}
+  description={posts[pageIndex].data.description ?? description}
+>
+  <div
+    class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70"
+  >
+    <div data-turbo-permanent id="search">
+      <Search />
+    </div>
+    <div id="banner">
+      <Banner banner={banner} client:load />
+    </div>
+    
+    <div data-turn-enter>
+      <Page post={posts[pageIndex]} />
+    </div>
   </div>
-  <Sidebar client:load />
 </Layout>

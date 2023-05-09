@@ -9,22 +9,28 @@ interface Props {
 }
 ---
 
-<article class="text-slate-600 dark:text-slate-500 select-none">
+<article
+  class="text-slate-600 dark:text-slate-500 select-none"
+>
   <Breadcrumb title={post.data.title} />
   {
     post.data.type === 'default' ? (
-      <div class="text-sm px-6 py-2 mt-2">
+      <div class="text-sm px-4 py-2 mt-2">
         <RenderContent {...post} />
       </div>
     ) : (
-      <div class="px-6 py-2 grid grid-cols-2 gap-7 mt-4 dark:text-slate-500">
+      <div class="px-4 py-2 grid grid-cols-2 gap-7 mt-4 dark:text-slate-500">
         {post?.data?.links?.map((item) => {
           return (
             <a href={item.url} target="_blank">
               <div class="flex p-2 text-sm items-center bg-slate-100 dark:bg-slate-900 rounded overflow-hidden">
-                <img src={item.url + 'favicon.ico'} alt="favicon" class="w-10 h-10 mr-3" />
-                <div class="flex flex-col justify-between">
-                  <div class="font-bold">{item.title}</div>
+                <img
+                  src={item.url + 'favicon.ico'}
+                  alt="favicon"
+                  class="w-10 h-10"
+                />
+                <div class="flex flex-col justify-between text-right w-full">
+                  <div class="text-sm">{item.title}</div>
                   <div class="text-xs">{item.desc}</div>
                 </div>
               </div>

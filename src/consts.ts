@@ -1,7 +1,13 @@
-import { LogoGithub, Mail, LogoInstagram, LocationSharp } from '@vicons/ionicons5';
+import {
+  LogoGithub,
+  Mail,
+  LogoInstagram,
+  LocationSharp,
+} from '@vicons/ionicons5';
 import { TelegramPlane } from '@vicons/fa';
 import bgImageUrl from '@assets/images/banner.jpeg';
 import avatar from '@assets/images/avatar.jpg';
+
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
@@ -26,21 +32,6 @@ export const raving = [
   '好久没见了什么角色呢。',
   '一颗棋子，到了没有用该舍弃之时，难道下棋的人还会怜惜不舍吗？',
   '那些幼稚的轻狂的勇敢的，从此收着。',
-];
-
-export const stack = [
-  'vue',
-  'react',
-  'flutter',
-  'nodejs',
-  'python',
-  'dart',
-  'javascript',
-  'typescript',
-  'html',
-  'css',
-  'angular',
-  'php',
 ];
 
 export const countdown = [

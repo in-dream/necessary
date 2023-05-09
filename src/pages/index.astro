@@ -5,7 +5,6 @@ import { title, description } from '@consts';
 import Layout from '@layouts/Layout.astro';
 import Search from '@components/Search.astro';
 import Banner from '@dynamic/Banner';
-import Sidebar from '@dynamic/Sidebar';
 import { banner } from '@consts';
 const posts = (await getCollection('posts')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
@@ -13,12 +12,17 @@ const posts = (await getCollection('posts')).sort(
 ---
 
 <Layout title={title} description={description}>
-  <div class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70">
-    {/* Search */}
-    <Search />
-    {/* Banner */}
-    <Banner banner={banner} />
-    <PostList posts={posts} />
+  <div
+    class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70"
+  >
+    <div data-turbo-permanent id="search">
+      <Search />
+    </div>
+    <div data-turbo-permanent id="banner">
+      <Banner banner={banner} client:load />
+    </div>
+    <div data-turn-enter>
+      <PostList posts={posts} />
+    </div>
   </div>
-  <Sidebar client:load />
 </Layout>

@@ -3,12 +3,17 @@ import { atom } from 'nanostores';
 export const themeStore = atom<string>('dark');
 
 export const getTheme = () => {
-  const prefersDarkMode = matchMedia('(prefers-color-scheme: dark)').matches;
+  const prefersDarkMode = matchMedia(
+    '(prefers-color-scheme: dark)',
+  ).matches;
   const savedTheme = localStorage.getItem('theme');
   return savedTheme || (prefersDarkMode ? 'dark' : 'light');
 };
 export const setTheme = (theme: string) => {
-  document.documentElement.classList.remove('light', 'dark');
+  document.documentElement.classList.remove(
+    'light',
+    'dark',
+  );
   document.documentElement.classList.add(theme);
 };
 export const changeTheme = (theme: string) => {
@@ -21,5 +26,7 @@ export const onInit = () => {
   changeTheme(theme);
 };
 export const toggleTheme = () => {
-  changeTheme(themeStore.get() === 'light' ? 'dark' : 'light');
+  changeTheme(
+    themeStore.get() === 'light' ? 'dark' : 'light',
+  );
 };
