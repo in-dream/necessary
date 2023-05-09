@@ -16,7 +16,6 @@ const url = Astro.url.pathname;
 <html lang="zh">
   <head>
     <BaseHead title={title} description={description} />
-   
   </head>
 
   <body class="dark:bg-slate-900/95">
@@ -31,11 +30,8 @@ const url = Astro.url.pathname;
       </div>
     </div>
     <script>
-      import * as Turbo from '@hotwired/turbo';
-      import Turn from '@domchristie/turn';
-      Turn.start();
-      Turn.config.experimental.viewTransitions = true;
-      Turbo.start();
+      import { spaInit } from '@utils/spa';
+      spaInit();
     </script>
   </body>
 </html>

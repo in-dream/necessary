@@ -58,7 +58,7 @@ export default defineComponent({
             alt="banner-img"
             class="object-cover scale-105 filter brightness-50"
           />
-          <div class="absolute z-10 w-full bottom-0 text-white p-4">
+          <div class="absolute z-10 w-full bottom-5 text-white px-4">
             <div class="text-xl mb-2 font-bold">
               {banner.title}
             </div>

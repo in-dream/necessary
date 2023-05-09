@@ -9,6 +9,11 @@ import node from '@astrojs/node';
 export default defineConfig({
   site: 'http://localhost:3000/',
   output: 'server',
+  vite:{
+    ssr:{
+      noExternal: ['@domchristie/turn'],
+    }
+  },
   integrations: [
     mdx(),
     sitemap(),

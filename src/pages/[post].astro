@@ -3,11 +3,13 @@ import Layout from '@layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import Search from '@components/Search.astro';
 import Post from '@components/Post.astro';
-import { generateExcerpt } from '@utils/index';
+import {
+  generateExcerpt,
+  getImageByPost,
+} from '@utils/index';
 import { title } from '@consts';
 import Banner from '@dynamic/Banner';
 import { banner } from '@consts';
-import { getImageByPost } from '@utils/index';
 export const prerender = true;
 export const getStaticPaths = async () => {
   const posts = await getCollection('posts');
@@ -42,8 +44,8 @@ const bannerData = {
     <div id="banner">
       <Banner banner={bannerData} type="post" client:load />
     </div>
-    <div data-turn-enter data-turn-exit > 
-    <Post post={posts[pageIndex]} />
+    <div data-turn-enter data-turn-exit>
+      <Post post={posts[pageIndex]} />
     </div>
   </div>
 </Layout>

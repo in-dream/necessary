@@ -4,10 +4,13 @@ import Page from '@components/Page.astro';
 import { getCollection } from 'astro:content';
 import Search from '@components/Search.astro';
 import Banner from '@dynamic/Banner';
-import { generateExcerpt } from '@utils/index';
+
 import { title } from '@consts';
 import { banner } from '@consts';
-
+import {
+  generateExcerpt,
+  getImageByPost,
+} from '@utils/index';
 export const prerender = true;
 export const getStaticPaths = async () => {
   const posts = await getCollection('pages');
@@ -21,11 +24,21 @@ const pageIndex = posts.findIndex(
   (post) => post.slug === page,
 );
 const description = generateExcerpt(posts[pageIndex].body);
+
+const bannerData = {
+  bgImageUrl: getImageByPost(posts[pageIndex].body)
+    ? getImageByPost(posts[pageIndex].body)
+    : banner.bgImageUrl,
+  title: posts[pageIndex].data.title,
+  description:
+    posts[pageIndex].data.description ?? description,
+};
 ---
 
 <Layout
   title={posts[pageIndex].data.title + ' - ' + title}
-  description={posts[pageIndex].data.description ?? description}
+  description={posts[pageIndex].data.description ??
+    description}
 >
   <div
     class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70"
@@ -34,9 +47,9 @@ const description = generateExcerpt(posts[pageIndex].body);
       <Search />
     </div>
     <div id="banner">
-      <Banner banner={banner} client:load />
+      <Banner banner={bannerData} client:load type="post" />
     </div>
-    
+
     <div data-turn-enter>
       <Page post={posts[pageIndex]} />
     </div>
