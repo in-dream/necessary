@@ -25,7 +25,7 @@ const description = generateExcerpt(posts[pageIndex].body);
 
 <Layout
   title={posts[pageIndex].data.title + ' - ' + title}
-  description={description}
+  description={posts[pageIndex].data.description ?? description}
 >
   <div
     class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70"
@@ -34,7 +34,7 @@ const description = generateExcerpt(posts[pageIndex].body);
       <Search />
     </div>
     <div id="banner">
-      <Banner banner={banner} client:only="vue" />
+      <Banner banner={banner} client:load />
     </div>
     
     <div data-turn-enter>

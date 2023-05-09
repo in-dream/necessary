@@ -40,7 +40,7 @@ const bannerData = {
       <Search />
     </div>
     <div id="banner">
-      <Banner banner={bannerData} type="post" />
+      <Banner banner={bannerData} type="post" client:load />
     </div>
     <div data-turn-enter data-turn-exit > 
     <Post post={posts[pageIndex]} />

@@ -5,7 +5,6 @@ import { title, description } from '@consts';
 import Layout from '@layouts/Layout.astro';
 import Search from '@components/Search.astro';
 import Banner from '@dynamic/Banner';
-import Sidebar from '@dynamic/Sidebar';
 import { banner } from '@consts';
 const posts = (await getCollection('posts')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
@@ -20,7 +19,7 @@ const posts = (await getCollection('posts')).sort(
       <Search />
     </div>
     <div data-turbo-permanent id="banner">
-      <Banner banner={banner} client:only="vue" />
+      <Banner banner={banner} client:load />
     </div>
     <div data-turn-enter>
       <PostList posts={posts} />
