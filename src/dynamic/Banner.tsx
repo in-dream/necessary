@@ -1,6 +1,6 @@
 import { PropType, defineComponent } from 'vue';
 
-interface Banner {
+interface BannerProps {
   bgImageUrl: string;
   title: string;
   description: string;
@@ -12,7 +12,7 @@ type BannerType = 'default' | 'post';
 export default defineComponent({
   props: {
     banner: {
-      type: Object as PropType<Banner>,
+      type: Object as PropType<BannerProps>,
       default: () => {},
     },
     type: {

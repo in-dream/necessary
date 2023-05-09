@@ -31,11 +31,11 @@ const url = Astro.url.pathname;
       </div>
     </div>
     <script>
-      import Turn from '@domchristie/turn';
       import * as Turbo from '@hotwired/turbo';
+      import Turn from '@domchristie/turn';
       Turn.start();
-      Turbo.start();
       Turn.config.experimental.viewTransitions = true;
+      Turbo.start();
     </script>
   </body>
 </html>

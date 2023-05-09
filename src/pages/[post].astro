@@ -39,8 +39,8 @@ const bannerData = {
     <div data-turbo-permanent id="search">
       <Search />
     </div>
-    <div data-turbo-permanent id="banner">
-      <Banner banner={bannerData} />
+    <div id="banner">
+      <Banner banner={bannerData} type="post" />
     </div>
     <div data-turn-enter data-turn-exit > 
     <Post post={posts[pageIndex]} />
