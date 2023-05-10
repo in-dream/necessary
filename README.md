@@ -21,6 +21,15 @@ An Astro-based theme for quickly building a blog.
 - Generate QR code online
 - location information
 
+### todo list
+
+1. theme use localStorage with base, change to @vueuse import manage.
+2. change useage fetch to axios
+3. axios <JSON_MAPPING> request
+4. Responsive Layout
+5. Post timeType page render
+6. seo rss.xml page return (bugfix)
+
 ## Code Features
 
 - Comments (incomplete) Access to third-party SDK

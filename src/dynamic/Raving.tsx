@@ -42,9 +42,7 @@ export default defineComponent({
                 <RefreshOutline class="w-8 cursor-pointer" />
               </div>
             </div>
-            <div class="pt-4 line-clamp-2">
-              {raving[num.value]}
-            </div>
+            <div class="pt-4 line-clamp-2">{raving[num.value]}</div>
           </div>
         </div>
       </div>

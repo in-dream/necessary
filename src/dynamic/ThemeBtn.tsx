@@ -1,11 +1,7 @@
 import { InvertMode } from '@vicons/ionicons5';
 import { defineComponent, onMounted } from 'vue';
 import { useStore } from '@nanostores/vue';
-import {
-  themeStore,
-  onInit,
-  toggleTheme,
-} from 'stores/Theme';
+import { themeStore, onInit, toggleTheme } from 'stores/Theme';
 export default defineComponent({
   setup() {
     const theme = useStore(themeStore);

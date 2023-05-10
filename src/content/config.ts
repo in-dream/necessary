@@ -43,9 +43,7 @@ const posts = defineCollection({
     updatedDate: z
       .string()
       .optional()
-      .transform((str) =>
-        str ? new Date(str) : undefined,
-      ),
+      .transform((str) => (str ? new Date(str) : undefined)),
     avatar: z.string().optional(),
     author: z.string(),
     type: z.string().default('default'),

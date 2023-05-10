@@ -34,8 +34,7 @@ export default defineComponent({
                 class={[
                   {
                     hidden: !copied.value,
-                    'animate-[left-show_.1s_linear]':
-                      copied.value,
+                    'animate-[left-show_.1s_linear]': copied.value,
                   },
                 ]}
               >

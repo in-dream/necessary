@@ -16,9 +16,7 @@ export default defineComponent({
         <div>
           <div class="p-3 pl-5 h-20 flex justify-center flex-col text-slate-600 text-sm border-b border-gray-300/20 dark:border-slate-700/10">
             <div class="text-lg pl-3">{title}</div>
-            <div class="text-xs pt-2 pl-3">
-              Pry into whose life.
-            </div>
+            <div class="text-xs pt-2 pl-3">Pry into whose life.</div>
           </div>
           <div>
             <ul class="p-5 text-sm text-slate-500 gap-3 grid">
@@ -30,10 +28,7 @@ export default defineComponent({
                       : ''
                   }`}
                 >
-                  <a
-                    href={i.url}
-                    class="rounded-lg flex items-center p-3 py-3"
-                  >
+                  <a href={i.url} class="rounded-lg flex items-center p-3 py-3">
                     {h(i.icon, {
                       class: 'w-5 h-5 mr-3',
                     })}

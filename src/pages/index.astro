@@ -6,14 +6,17 @@ import Layout from '@layouts/Layout.astro';
 import Search from '@components/Search.astro';
 import Banner from '@dynamic/Banner';
 import { banner } from '@consts';
+import Player from '@dynamic/Player';
 const posts = (await getCollection('posts')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
+
+
 ---
 
 <Layout title={title} description={description}>
   <div
-    class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70"
+    class="col-span-2 mb-16 bg-white flex flex-col dark:bg-slate-800/70"
   >
     <div data-turbo-permanent id="search">
       <Search />
@@ -23,6 +26,9 @@ const posts = (await getCollection('posts')).sort(
     </div>
     <div data-turn-enter>
       <PostList posts={posts} />
+    </div>
+    <div data-turbo-permanent id="player">
+      <Player client:only="vue" />
     </div>
   </div>
 </Layout>

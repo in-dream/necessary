@@ -1,8 +1,4 @@
-import {
-  InformationCircle,
-  PeopleCircle,
-  Bookmarks,
-} from '@vicons/ionicons5';
+import { InformationCircle, PeopleCircle, Bookmarks } from '@vicons/ionicons5';
 
 export const navigate = [
   {

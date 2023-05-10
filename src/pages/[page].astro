@@ -11,6 +11,7 @@ import {
   generateExcerpt,
   getImageByPost,
 } from '@utils/index';
+import Player from '@dynamic/Player';
 export const prerender = true;
 export const getStaticPaths = async () => {
   const pages = await getCollection('pages');
@@ -41,7 +42,7 @@ const bannerData = {
     description}
 >
   <div
-    class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70"
+    class="col-span-2 mb-16 bg-white flex flex-col dark:bg-slate-800/70"
   >
     <div data-turbo-permanent id="search">
       <Search />
@@ -52,6 +53,10 @@ const bannerData = {
 
     <div data-turn-enter>
       <Page post={pages[pageIndex]} />
+    </div>
+
+    <div data-turbo-permanent id="player">
+      <Player client:only="vue" />
     </div>
   </div>
 </Layout>

@@ -17,9 +17,7 @@ export default defineComponent({
                 {h(i.icon, {
                   class: 'w-5 h-5 mr-2 text-slate-500',
                 })}
-                <span class="text-slate-500/90">
-                  {i.title}
-                </span>
+                <span class="text-slate-500/90">{i.title}</span>
               </a>
             </li>
           ))}

@@ -1,14 +1,5 @@
-import {
-  PropType,
-  defineComponent,
-  reactive,
-  watch,
-} from 'vue';
-import {
-  Close,
-  ArrowBack,
-  ArrowForward,
-} from '@vicons/ionicons5';
+import { PropType, defineComponent, reactive, watch } from 'vue';
+import { Close, ArrowBack, ArrowForward } from '@vicons/ionicons5';
 import { useMagicKeys } from '@vueuse/core';
 
 interface DialogConfig {
@@ -24,8 +15,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const { escape, arrowleft, arrowright } =
-      useMagicKeys();
+    const { escape, arrowleft, arrowright } = useMagicKeys();
     const dialogConfig = reactive<DialogConfig>({
       state: false,
       photoKey: 0,
@@ -42,10 +32,7 @@ export default defineComponent({
       dialogConfig.state = false;
     };
 
-    const stopExtendFunc = (
-      event: Event,
-      func: Function = () => {},
-    ) => {
+    const stopExtendFunc = (event: Event, func: Function = () => {}) => {
       event.stopPropagation();
       func();
     };
@@ -85,9 +72,7 @@ export default defineComponent({
             >
               <div
                 class="w-10 h-10 bg-black/5 text-white flex justify-center items-center cursor-pointer absolute left-0"
-                onClick={(e) =>
-                  stopExtendFunc(e, prevPhoto)
-                }
+                onClick={(e) => stopExtendFunc(e, prevPhoto)}
               >
                 <ArrowBack class="w-6" />
               </div>
@@ -106,9 +91,7 @@ export default defineComponent({
               />
               <div
                 class="w-10 h-10 bg-black/5 text-white flex justify-center items-center cursor-pointer absolute right-0"
-                onClick={(e) =>
-                  stopExtendFunc(e, nextPhoto)
-                }
+                onClick={(e) => stopExtendFunc(e, nextPhoto)}
               >
                 <ArrowForward class="w-6" />
               </div>

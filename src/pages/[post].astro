@@ -10,6 +10,7 @@ import {
 import { title } from '@consts';
 import Banner from '@dynamic/Banner';
 import { banner } from '@consts';
+import Player from '@dynamic/Player';
 export const prerender = true;
 export const getStaticPaths = async () => {
   const posts = await getCollection('posts');
@@ -36,7 +37,7 @@ const bannerData = {
   description={description}
 >
   <div
-    class="col-span-2 bg-white flex flex-col dark:bg-slate-800/70"
+    class="col-span-2 mb-16 bg-white flex flex-col dark:bg-slate-800/70"
   >
     <div data-turbo-permanent id="search">
       <Search />
@@ -46,6 +47,9 @@ const bannerData = {
     </div>
     <div data-turn-enter data-turn-exit>
       <Post post={posts[pageIndex]} />
+    </div>
+    <div data-turbo-permanent id="player">
+      <Player client:only="vue" />
     </div>
   </div>
 </Layout>
