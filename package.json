@@ -31,7 +31,6 @@
     "@vueuse/core": "^10.1.2",
     "astro": "^2.4.4",
     "axios": "^1.4.0",
-    "json2typescript": "^1.5.1",
     "nanostores": "^0.8.1",
     "postcss": "^8.4.23",
     "prettier-plugin-astro": "^0.8.0",
