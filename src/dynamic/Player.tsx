@@ -39,13 +39,61 @@ export default defineComponent({
         console.log(music);
       },
     );
+    const landState = ref(false);
 
     return () => (
       <div
         class="fixed bottom-0  justify-center items-center overflow-hidden select-none"
         style="width:640px"
       >
-        <div class="flex w-full  h-16  bg-black/20 backdrop-blur  px-2">
+        {landState.value ? (
+          <div
+            class={{
+              'bg-black/30 backdrop-blur-lg  px-3 py-5 text-white text-xs font-light':
+                true,
+
+              'transition ease-in duration-100 ': landState.value,
+            }}
+          >
+            <div class="relative overflow-auto">
+              <div class="shadow-sm overflow-hidden">
+                <table class="border-collapse table-auto w-full text-xs">
+                  <thead>
+                    <tr>
+                      <th class="border-b dark:border-slate-600 p-2 font-medium text-white dark:text-slate-200 text-left">
+                        Song
+                      </th>
+                      <th class="border-b dark:border-slate-600 p-2  font-medium text-white dark:text-slate-200 text-left">
+                        Artist
+                      </th>
+                      <th class="border-b dark:border-slate-600 p-2  font-medium  text-white dark:text-slate-200 text-left">
+                        Time
+                      </th>
+                      <th class="border-b dark:border-slate-600 p-2  font-medium  text-white dark:text-slate-200 text-left"></th>
+                    </tr>
+                  </thead>
+                  <tbody class=" dark:bg-slate-800/20 bg-slate-300/20">
+                    <tr>
+                      <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700  text-white dark:text-slate-400">
+                        唯一
+                      </td>
+                      <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700   text-white dark:text-slate-400">
+                        告五人
+                      </td>
+                      <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700  text-white dark:text-slate-400">
+                        3:41
+                      </td>
+                      <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700  text-white dark:text-slate-400 text-right">
+                        <Play class="w-5 h-5 text-white cursor-pointer" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        ) : null}
+        <div class="flex w-full h-16  bg-black/30 backdrop-blur  px-2">
           <video ref={music} class="hidden" />
           <div class="relative w-16 h-16 flex justify-center items-center">
             <img src={PlayerCover} alt="PlayerCover" class="w-12 h-12" />
@@ -77,7 +125,12 @@ export default defineComponent({
                   <Pause class="w-5 h-5 text-white" />
                 )}
               </div>
-              <div class=" cursor-pointer">
+              <div
+                class=" cursor-pointer"
+                onClick={() => {
+                  landState.value = !landState.value;
+                }}
+              >
                 <List class="w-5 h-5 text-white" />
               </div>
             </div>

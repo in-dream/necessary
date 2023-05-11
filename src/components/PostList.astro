@@ -7,6 +7,7 @@ import PostListBar from '@dynamic/PostListBar';
 import { DocumentText } from '@vicons/ionicons5';
 import PhotoView from '@dynamic/PhotoView';
 import { generateExcerpt, generateImageList } from '@utils/index';
+import avatar from '@assets/images/avatar.jpg'
 interface Props {
   posts: CollectionEntry<'posts'>[] | undefined;
 }
@@ -31,7 +32,7 @@ const basicUrl = Astro.site?.href;
           <div>
             <div class="flex justify-between">
               <div class="flex">
-                <img src={post.data.avatar} alt="avatars" class="w-12 h-12 rounded" />
+                <img src={avatar} alt="avatars" class="w-12 h-12 rounded" />
                 <div class="pl-4 text-slate-500 flex flex-col justify-between">
                   <div class="text-sm font-bold">{post.data.author}</div>
                   <div class="text-sm font-bold cursor-pointer">

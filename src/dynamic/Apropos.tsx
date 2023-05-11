@@ -1,7 +1,7 @@
-import { dateDiff } from '@utils/index';
+import { dateDiff, getImageByPost } from '@utils/index';
 import { getCollection } from 'astro:content';
-import { defineComponent } from 'vue';
-
+import { defineComponent, ref } from 'vue';
+import defaultImg from '@assets/images/times.jpg';
 const times = (await getCollection('times')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
@@ -15,12 +15,21 @@ export default defineComponent({
           return (
             <div class="cursor-pointer bg-slate-300 dark:bg-slate-700 box-content h-24 rounded mt-5 relative  overflow-hidden  opacity-75 flex justify-center items-center">
               <div class="absolute -z-10">
-                <img src={i.data.background} class="blur" />
+                <img
+                  src={
+                    getImageByPost(i.body) ? getImageByPost(i.body) : defaultImg
+                  }
+                  class="blur"
+                />
               </div>
               <div class="text-white text-xs w-full grid grid-flow-col grid-cols-4">
                 <div class="flex items-center w-full  col-span-2">
                   <img
-                    src={i.data.background}
+                    src={
+                      getImageByPost(i.body)
+                        ? getImageByPost(i.body)
+                        : defaultImg
+                    }
                     class="object-cover clip-path-background h-24 w-full"
                   />
                 </div>

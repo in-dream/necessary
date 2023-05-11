@@ -39,8 +39,3 @@ export const getImageByPost = (content: string) => {
   const result = regex.exec(content);
   return result ? result[1] : '';
 };
-
-export const getDefaultBg = async () => {
-  const res = await import('@assets/images/times.jpg');
-  return res.default;
-};
