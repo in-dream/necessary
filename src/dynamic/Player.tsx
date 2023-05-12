@@ -1,29 +1,18 @@
-import { Ref, defineComponent, onMounted, ref, watch } from 'vue';
+import { defineComponent, onMounted, ref } from 'vue';
 import { Play, Pause, List } from '@vicons/ionicons5';
 import PlayerCover from '@assets/images/singlecover.png';
 import { useMediaControls } from '@vueuse/core';
 import PlayerDefaultImg from '@assets/images/defaultPlayer.png';
 import { fetchMusicInfo } from '../api/repositories/Music';
-// import type { MusicType } from 'api/model/MusicType';
-export default defineComponent({
-  setup(props) {
-    // const musicInfo: Ref<MusicType | undefined> = ref();
 
+export default defineComponent({
+  async setup() {
     onMounted(async () => {
-      const res = await fetchMusicInfo();
-      console.log(res);
-      // musicInfo.value = await featchMusicInfo('1974698351');
       volume.value = 1;
       currentTime.value = 0;
     });
-    // console.log(musicInfo.value?.code)
-    const { avatar, name, author, url } = {
-      avatar:
-        'http://p1.music.126.net/woiqainQI-orV_RuUuOVRw==/716881581353216.jpg?param=130y130',
-      name: 'Merry Christmas Mr. Lawrence',
-      author: '坂本龍一',
-      url: 'https://api.oick.cn/wyy/api.php?id=4899152',
-    };
+
+    const { avatar, name, artists, url } = await fetchMusicInfo(4899152);
     const music = ref<HTMLVideoElement>();
     const { playing, currentTime, duration, volume } = useMediaControls(music, {
       src: {
@@ -31,14 +20,6 @@ export default defineComponent({
         type: 'audio/mp3',
       },
     });
-
-    watch(
-      () => playing.value,
-      (v) => {
-        console.log(v);
-        console.log(music);
-      },
-    );
     const landState = ref(false);
 
     return () => (
@@ -84,7 +65,7 @@ export default defineComponent({
                         3:41
                       </td>
                       <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700  text-white dark:text-slate-400 text-right">
-                        <Play class="w-5 h-5 text-white cursor-pointer" />
+                        <Play class="w-3 h-3 text-white cursor-pointer" />
                       </td>
                     </tr>
                   </tbody>
@@ -109,7 +90,7 @@ export default defineComponent({
                 {name ? name : '歌曲名称'}
               </div>
               <div class="text-xs text-white/75 pt-1">
-                {author ? author : '歌手名称'}
+                {artists.map((item) => item).join('/')}
               </div>
             </div>
             <div class="flex items-center">
