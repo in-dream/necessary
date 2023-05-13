@@ -3,20 +3,24 @@ import { Play, Pause, List } from '@vicons/ionicons5';
 import PlayerCover from '@assets/images/singlecover.png';
 import { useMediaControls } from '@vueuse/core';
 import PlayerDefaultImg from '@assets/images/defaultPlayer.png';
-import { fetchMusicInfo } from '../api/repositories/Music';
-
+import { usePlayerStore } from '@stores/Player';
+import { storeToRefs } from 'pinia';
 export default defineComponent({
   async setup() {
+    const playerStore = usePlayerStore();
     onMounted(async () => {
+      await playerStore.onInit();
       volume.value = 1;
       currentTime.value = 0;
     });
 
-    const { avatar, name, artists, url } = await fetchMusicInfo(4899152);
+    const { player } = storeToRefs(playerStore);
+    console.log(player);
+
     const music = ref<HTMLVideoElement>();
     const { playing, currentTime, duration, volume } = useMediaControls(music, {
       src: {
-        src: url,
+        src: player.value.url,
         type: 'audio/mp3',
       },
     });
@@ -79,7 +83,7 @@ export default defineComponent({
           <div class="relative w-16 h-16 flex justify-center items-center">
             <img src={PlayerCover} alt="PlayerCover" class="w-12 h-12" />
             <img
-              src={avatar ? avatar : PlayerDefaultImg}
+              src={player.value.avatar ? player.value.avatar : PlayerDefaultImg}
               alt="music-pic"
               class="w-10 h-10 object-cover absolute -z-10 rounded-full"
             />
@@ -87,10 +91,10 @@ export default defineComponent({
           <div class="flex-grow flex justify-between pl-2 h-full pr-3">
             <div class="py-3 flex justify-between flex-col">
               <div class="text-xs text-white line-clamp-2">
-                {name ? name : '歌曲名称'}
+                {player.value.name ? player.value.name : '歌曲名称'}
               </div>
               <div class="text-xs text-white/75 pt-1">
-                {artists.map((item) => item).join('/')}
+                {player.value.artists.map((item) => item).join('/')}
               </div>
             </div>
             <div class="flex items-center">

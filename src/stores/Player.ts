@@ -1,16 +1,21 @@
-import { MaybeRef, useMediaControls } from '@vueuse/core';
-import { atom } from 'nanostores';
-// export const music = atom<MaybeRef<HTMLMediaElement | null | undefined>>();
-// const { playing, currentTime, duration, volume } = useMediaControls(
-//   music.get(),
-//   {
-//     src: 'video.mp4',
-//   },
-// );
-interface playerList {
-  name: string;
-  author: string;
-  avatar: string;
-  time: string;
-}
-export const playerList = atom<playerList[]>([]);
+import { defaultPlayerId } from '@consts';
+import type { MusicType } from 'api/model/MusicType';
+import { fetchMusicInfo } from 'api/repositories/Music';
+import { defineStore } from 'pinia';
+
+export const usePlayerStore = defineStore('player-store', {
+  state: () => ({
+    player: <MusicType>{
+      name: '',
+      artists: [''],
+      avatar: '',
+      url: '',
+    },
+    playerList: <MusicType[]>[],
+  }),
+  actions: {
+    async onInit() {
+      this.player = await fetchMusicInfo(defaultPlayerId);
+    },
+  },
+});

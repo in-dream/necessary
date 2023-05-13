@@ -20,7 +20,8 @@
       "@consts": ["consts.ts"],
       "@dynamic/*": ["dynamic/*"],
       "@i18n/*": ["i18n/*"],
-      "@stores/*": ["stores/*"]
+      "@stores/*": ["stores/*"],
+      "@api/*": ["api/*"]
     }
   }
 }

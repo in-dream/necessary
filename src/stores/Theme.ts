@@ -1,25 +1,29 @@
-import { atom } from 'nanostores';
+import { defineStore } from 'pinia';
 
-export const themeStore = atom<string>('dark');
-
-export const getTheme = () => {
-  const prefersDarkMode = matchMedia('(prefers-color-scheme: dark)').matches;
-  const savedTheme = localStorage.getItem('theme');
-  return savedTheme || (prefersDarkMode ? 'dark' : 'light');
-};
-export const setTheme = (theme: string) => {
-  document.documentElement.classList.remove('light', 'dark');
-  document.documentElement.classList.add(theme);
-};
-export const changeTheme = (theme: string) => {
-  themeStore.set(theme);
-  localStorage.setItem('theme', theme);
-  setTheme(theme);
-};
-export const onInit = () => {
-  const theme = getTheme();
-  changeTheme(theme);
-};
-export const toggleTheme = () => {
-  changeTheme(themeStore.get() === 'light' ? 'dark' : 'light');
-};
+export const useThemeStore = defineStore('theme-store', {
+  state: () => ({ theme: 'light' }),
+  actions: {
+    getTheme() {
+      const prefersDarkMode = matchMedia(
+        '(prefers-color-scheme: dark)',
+      ).matches;
+      const savedTheme = localStorage.getItem('theme');
+      return savedTheme || (prefersDarkMode ? 'dark' : 'light');
+    },
+    setTheme(theme: string) {
+      document.documentElement.classList.remove('light', 'dark');
+      document.documentElement.classList.add(theme);
+    },
+    changeTheme(theme: string) {
+      this.theme = theme;
+      localStorage.setItem('theme', theme);
+      this.setTheme(theme);
+    },
+    onInit() {
+      this.setTheme(this.getTheme());
+    },
+    toggleTheme() {
+      this.changeTheme(this.theme === 'light' ? 'dark' : 'light');
+    },
+  },
+});

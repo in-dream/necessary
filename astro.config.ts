@@ -16,9 +16,9 @@ export default defineConfig({
     server: {
       proxy: {
         '/api/music': {
-          target: 'https://music.163.com/api/', // 代理接口的地址
+          target: 'https://music.163.com/api/',
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api\/music/, ''), // 去除接口路径中的 '/api' 前缀
+          rewrite: (path) => path.replace(/^\/api\/music/, ''),
         },
       },
     },
