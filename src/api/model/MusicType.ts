@@ -1,27 +1,41 @@
 import { JsonObject, JsonProperty } from 'json2typescript';
 
-@JsonObject('MusicType')
-export class MusicType {
-  @JsonProperty('songs', Object)
-  private songs: {
-    name: string;
-    artists: [{ name: string }];
-    album: { picUrl: string };
-    id: number;
-  }[] = [];
+@JsonObject('album')
+export class Album {
+  @JsonProperty('picUrl', String)
+  public picUrl: string = '';
+}
 
-  public get artists(): string[] {
-    return this.songs[0].artists.map((item) => item.name);
-  }
-  public get name(): string {
-    return this.songs[0].name;
+@JsonObject('artist')
+export class Artist {
+  @JsonProperty('name', String)
+  public name: string = '';
+}
+@JsonObject('player')
+export class Player {
+  @JsonProperty('name', String)
+  public name: string = '';
+
+  @JsonProperty('id', Number)
+  public id: string = '';
+
+  @JsonProperty('artists', [Artist], true)
+  public artists: Artist[] = [];
+
+  @JsonProperty('album', Album)
+  private _album: Album = new Album();
+
+  public get picUrl(): string {
+    return this._album.picUrl;
   }
 
-  public get avatar(): string {
-    return this.songs[0].album.picUrl;
+  public set picUrl(value: string) {
+    this._album.picUrl = value;
   }
 
   public get url(): string {
-    return `https://music.163.com/song/media/outer/url?id=${this.songs[0].id}.mp3`;
+    return `https://music.163.com/song/media/outer/url?id=${this.id}.mp3`;
   }
 }
+
+

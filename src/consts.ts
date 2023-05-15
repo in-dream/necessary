@@ -7,7 +7,7 @@ import {
 import { TelegramPlane } from '@vicons/fa';
 import bgImageUrl from '@assets/images/banner.jpeg';
 import avatar from '@assets/images/avatar.jpg';
-import type { MusicType } from '@api/model/MusicType';
+
 
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
@@ -70,4 +70,7 @@ export const followMe = [
   },
 ];
 
-export const defaultPlayerId = 4899152;
+export const defaultPlayer = {
+  defaultPlayerId: '1807799505',
+  defaultPlayerList: ['1807799505', '4899152', '1891169736'],
+};
