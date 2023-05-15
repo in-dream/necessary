@@ -1,4 +1,4 @@
-import { defineComponent, onMounted, ref } from 'vue';
+import { defineComponent, onMounted, reactive, ref, toRef, toRefs } from 'vue';
 import { Play, Pause, List } from '@vicons/ionicons5';
 import PlayerCover from '@assets/images/singlecover.png';
 import { useMediaControls } from '@vueuse/core';
@@ -14,16 +14,12 @@ export default defineComponent({
       currentTime.value = 0;
     });
 
-    const { player } = storeToRefs(playerStore);
-    console.log(player);
+    const { player, playerConfig } = storeToRefs(playerStore);
 
     const music = ref<HTMLVideoElement>();
-    const { playing, currentTime, duration, volume } = useMediaControls(music, {
-      src: {
-        src: player.value.url,
-        type: 'audio/mp3',
-      },
-    });
+    const { playing, currentTime, duration, volume, buffered } =
+      useMediaControls(music, { src: playerConfig });
+
     const landState = ref(false);
 
     return () => (
