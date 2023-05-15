@@ -23,13 +23,14 @@ export default defineComponent({
         0,
         Math.min(1, elementX.value / elementWidth.value),
       );
+
       pendingValue.value = progress * props.max;
       if (scrubbing.value) value.value = pendingValue.value;
     });
 
     return () => (
       <div
-        ref="scrubber"
+        ref={scrubber}
         class="relative h-1 rounded cursor-pointer select-none bg-black dark:bg-white dark:bg-opacity-10 bg-opacity-20"
         onMousedown={() => {
           scrubbing.value = true;
@@ -37,7 +38,7 @@ export default defineComponent({
       >
         <div class="relative overflow-hidden h-full w-full rounded">
           <div
-            class="h-full absolute opacity-30 left-0 top-0 bg-slate-700 w-full rounded"
+            class="h-full absolute opacity-30 left-0 top-0 bg-slate-200 w-full rounded"
             style={{
               transform: `translateX(${
                 (props.secondary / props.max) * 100 - 100
@@ -45,7 +46,7 @@ export default defineComponent({
             }}
           />
           <div
-            class="relative h-full w-full bg-slate-500 rounded"
+            class="relative h-full w-full bg-slate-800 rounded"
             style={{
               transform: `translateX(${
                 (value.value / props.max) * 100 - 100
