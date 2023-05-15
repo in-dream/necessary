@@ -66,13 +66,13 @@ export default defineComponent({
 
     return () => (
       <div
-        class="fixed bottom-0  justify-center items-center overflow-hidden select-none"
+        class="fixed bottom-0  backdrop-blur-lg justify-center items-center overflow-hidden select-none"
         style="width:640px"
       >
         {landState.value ? (
           <div
             class={{
-              'bg-black/30 backdrop-blur-lg  px-3 py-5 text-white text-xs font-light':
+              'bg-black/30 px-3 py-5 text-white text-xs font-light':
                 true,
 
               'transition ease-in duration-100 ': landState.value,
@@ -104,7 +104,9 @@ export default defineComponent({
                         <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700  text-white dark:text-slate-400">
                           {i.artists.map((i) => i.name).join(' / ')}
                         </td>
-                        <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700  text-white dark:text-slate-400"></td>
+                        <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700  text-white dark:text-slate-400">
+                          {formatTime(i.duration / 1000)}
+                        </td>
                         <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700  text-white dark:text-slate-400 text-right">
                           <div
                             onClick={() => {
@@ -131,7 +133,7 @@ export default defineComponent({
             </div>
           </div>
         ) : null}
-        <div class="flex w-full h-16  bg-black/30 backdrop-blur  px-2">
+        <div class="flex w-full h-16  bg-black/30   px-2">
           <video ref={music} class="hidden" />
           <div class="relative w-16 h-16 flex justify-center items-center">
             <img src={PlayerCover} alt="PlayerCover" class="w-12 h-12" />
