@@ -1,31 +1,31 @@
-import { defaultPlayerId } from '@consts';
-import type { MusicType } from 'api/model/MusicType';
+import { defaultPlayer } from '@consts';
+import type { Player } from 'api/model/MusicType';
 import { fetchMusicInfo } from 'api/repositories/Music';
-import { set } from 'astro/zod';
 import { defineStore } from 'pinia';
-import { type Ref, reactive, ref } from 'vue';
 
 export const usePlayerStore = defineStore('player-store', {
   state: () => ({
-    player: <MusicType>{
-      name: '',
-      artists: [''],
-      avatar: '',
-      url: '',
-    },
-    playerList: <MusicType[]>[],
+    player: <Player>{},
+    playerList: <Player[]>[],
     playerConfig: {
       src: '',
       type: 'audio/mp3',
     },
+    index: 0,
   }),
   actions: {
     async onInit() {
-      this.player = await fetchMusicInfo(defaultPlayerId);
-      this.setPlayerUrl(this.player.url);
+      console.log(`---- init`);
+      this.playerList = await fetchMusicInfo(defaultPlayer.defaultPlayerList);
+      this.checkIn(0);
     },
     setPlayerUrl(url: string) {
       this.playerConfig.src = url;
+    },
+    checkIn(index: number) {
+      this.index = index;
+      this.setPlayerUrl(this.playerList[index].url);
+      this.player = this.playerList[index];
     },
   },
 });
