@@ -33,6 +33,9 @@ export class Player {
     this._album.picUrl = value;
   }
 
+  @JsonProperty('duration', Number)
+  public duration: number = 0;
+
   public get url(): string {
     return `https://music.163.com/song/media/outer/url?id=${this.id}.mp3`;
   }
