@@ -1,4 +1,6 @@
 import {
+  Slot,
+  Slots,
   computed,
   defineComponent,
   onMounted,
@@ -14,6 +16,7 @@ import PlayerDefaultImg from '@assets/images/defaultPlayer.png';
 import { usePlayerStore } from '@stores/Player';
 import { storeToRefs } from 'pinia';
 import Scrubber from './Scrubber';
+import { formatTime } from '@utils/index';
 export default defineComponent({
   async setup() {
     const playerStore = usePlayerStore();
@@ -44,14 +47,23 @@ export default defineComponent({
         ? buffered.value[buffered.value.length - 1][1]
         : 0,
     );
+    function formatDuration(seconds: number) {
+      return new Date(1000 * seconds).toISOString().slice(14, 19);
+    }
 
-
-    
-    const formatTime = (time: number) => {
-      const min = Math.floor(time / 60);
-      const sec = Math.floor(time % 60);
-      return `${min < 10 ? '0' + min : min}:${sec < 10 ? '0' + sec : sec}`;
+    const slot: Slots = {
+      default: (position, pendingValue) => [
+        <div>
+          <div
+            class="absolute transform -translate-x-1/2 bg-black rounded px-2 bottom-0 mb-4 py-1 text-xs text-white"
+            style={{ left: position }}
+          >
+            {formatDuration(pendingValue)}
+          </div>
+        </div>,
+      ],
     };
+
     return () => (
       <div
         class="fixed bottom-0  justify-center items-center overflow-hidden select-none"
@@ -140,15 +152,21 @@ export default defineComponent({
               <div class="flex justify-between text-xs text-white pr-4 items-center">
                 <div class="flex-grow">
                   <Scrubber
+                    v-model={currentTime.value}
                     modelValue={currentTime.value}
                     max={duration.value}
                     secondary={endBuffer.value}
                     class="mr-2"
                   >
+                    {slot.default}
                   </Scrubber>
                 </div>
                 <div class="-scale-90">
-                  <div class="-scale-100"> {formatTime(currentTime.value)} /{formatTime(duration.value)}</div>
+                  <div class="-scale-100">
+                    {' '}
+                    {formatTime(currentTime.value)} /
+                    {formatTime(duration.value)}
+                  </div>
                 </div>
               </div>
             </div>
