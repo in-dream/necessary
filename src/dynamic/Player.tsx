@@ -35,11 +35,19 @@ export default defineComponent({
     const landState = ref(false);
 
     const checkIn = (index: number) => {
-      setTimeout(() => {
-        playerStore.checkIn(index);
-        currentTime.value = 0;
-        playing.value = true;
-      }, 50);
+      const newMusic = (index: number) => {
+        setTimeout(() => {
+          playerStore.checkIn(index);
+          currentTime.value = 0;
+          playing.value = true;
+        }, 50);
+      };
+      playing.value = false;
+      !playing.value
+        ? player.value.id !== playerList.value[index].id
+          ? newMusic(index)
+          : (playing.value = false)
+        : newMusic(index);
     };
 
     const endBuffer = computed(() =>
@@ -72,7 +80,7 @@ export default defineComponent({
         {landState.value ? (
           <div
             class={{
-              'bg-black/30 px-3 py-5 text-white text-xs font-light':
+              'dark:bg-black/30 bg-black/30 px-3 py-5 text-white/90 text-xs font-light':
                 true,
 
               'transition ease-in duration-100 ': landState.value,
@@ -83,34 +91,33 @@ export default defineComponent({
                 <table class="border-collapse table-auto w-full text-xs">
                   <thead>
                     <tr>
-                      <th class="border-b dark:border-slate-600 p-2 font-medium text-white dark:text-slate-200 text-left">
+                      <th class="border-b dark:border-slate-600 p-2 font-medium text-left">
                         Song
                       </th>
-                      <th class="border-b dark:border-slate-600 p-2  font-medium text-white dark:text-slate-200 text-left">
+                      <th class="border-b dark:border-slate-600 p-2 font-medium text-left">
                         Artist
                       </th>
-                      <th class="border-b dark:border-slate-600 p-2  font-medium  text-white dark:text-slate-200 text-left">
+                      <th class="border-b dark:border-slate-600 p-2 font-medium text-left">
                         Time
                       </th>
-                      <th class="border-b dark:border-slate-600 p-2  font-medium  text-white dark:text-slate-200 text-left"></th>
+                      <th class="border-b dark:border-slate-600 p-2 font-medium text-left"></th>
                     </tr>
                   </thead>
                   <tbody>
                     {playerList.value.map((i, k) => (
                       <tr>
-                        <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700  text-white dark:text-slate-400">
+                        <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700 ">
                           {i.name}
                         </td>
-                        <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700  text-white dark:text-slate-400">
+                        <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700 ">
                           {i.artists.map((i) => i.name).join(' / ')}
                         </td>
-                        <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700  text-white dark:text-slate-400">
+                        <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700 ">
                           {formatTime(i.duration / 1000)}
                         </td>
-                        <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700  text-white dark:text-slate-400 text-right">
+                        <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700  text-right">
                           <div
                             onClick={() => {
-                              playing.value = false;
                               checkIn(k);
                             }}
                           >
@@ -133,7 +140,7 @@ export default defineComponent({
             </div>
           </div>
         ) : null}
-        <div class="flex w-full h-16  bg-black/30   px-2">
+        <div class="flex w-full h-16  bg-black/30 px-2 border-t border-slate-600/20">
           <video ref={music} class="hidden" />
           <div class="relative w-16 h-16 flex justify-center items-center">
             <img src={PlayerCover} alt="PlayerCover" class="w-12 h-12" />
@@ -165,8 +172,7 @@ export default defineComponent({
                 </div>
                 <div class="-scale-90">
                   <div class="-scale-100">
-                    {' '}
-                    {formatTime(currentTime.value)} /
+                    {formatTime(currentTime.value)} /{' '}
                     {formatTime(duration.value)}
                   </div>
                 </div>
