@@ -15,7 +15,6 @@ export const usePlayerStore = defineStore('player-store', {
   }),
   actions: {
     async onInit() {
-      console.log(`---- init`);
       this.playerList = await fetchMusicInfo(defaultPlayer.defaultPlayerList);
       this.checkIn(0);
     },

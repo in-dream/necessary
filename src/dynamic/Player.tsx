@@ -74,15 +74,13 @@ export default defineComponent({
 
     return () => (
       <div
-        class="fixed bottom-0  backdrop-blur-lg justify-center items-center overflow-hidden select-none"
+        class="fixed bottom-0 text-slate-600 dark:text-slate-300 font-bold backdrop-blur-lg justify-center items-center overflow-hidden select-none"
         style="width:640px"
       >
         {landState.value ? (
           <div
             class={{
-              'dark:bg-black/30 bg-black/30 px-3 py-5 text-white/90 text-xs font-light':
-                true,
-
+              'px-3 py-5 border-t border-slate-600/5 text-xs font-light': true,
               'transition ease-in duration-100 ': landState.value,
             }}
           >
@@ -91,31 +89,31 @@ export default defineComponent({
                 <table class="border-collapse table-auto w-full text-xs">
                   <thead>
                     <tr>
-                      <th class="border-b dark:border-slate-600 p-2 font-medium text-left">
+                      <th class="border-b p-2 font-medium text-left border-slate-500/20">
                         Song
                       </th>
-                      <th class="border-b dark:border-slate-600 p-2 font-medium text-left">
+                      <th class="border-b p-2 font-medium text-left border-slate-500/20">
                         Artist
                       </th>
-                      <th class="border-b dark:border-slate-600 p-2 font-medium text-left">
+                      <th class="border-b p-2 font-medium text-left border-slate-500/20">
                         Time
                       </th>
-                      <th class="border-b dark:border-slate-600 p-2 font-medium text-left"></th>
+                      <th class="border-b p-2 font-medium text-left border-slate-500/20"></th>
                     </tr>
                   </thead>
                   <tbody>
                     {playerList.value.map((i, k) => (
                       <tr>
-                        <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700 ">
+                        <td class="border-b px-2 py-1 border-slate-500/20">
                           {i.name}
                         </td>
-                        <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700 ">
+                        <td class="border-b px-2 py-1 border-slate-500/20">
                           {i.artists.map((i) => i.name).join(' / ')}
                         </td>
-                        <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700 ">
+                        <td class="border-b px-2 py-1 border-slate-500/20">
                           {formatTime(i.duration / 1000)}
                         </td>
-                        <td class="border-b border-slate-100 px-2 py-1 dark:border-slate-700  text-right">
+                        <td class="border-b px-2 py-1 text-right border-slate-500/20">
                           <div
                             onClick={() => {
                               checkIn(k);
@@ -123,12 +121,12 @@ export default defineComponent({
                           >
                             {playing.value ? (
                               player.value.id === i.id ? (
-                                <Pause class="w-3 h-3 text-white cursor-pointer" />
+                                <Pause class="w-3 h-3 cursor-pointer" />
                               ) : (
-                                <Play class="w-3 h-3 text-white cursor-pointer" />
+                                <Play class="w-3 h-3 cursor-pointer" />
                               )
                             ) : (
-                              <Play class="w-3 h-3 text-white cursor-pointer" />
+                              <Play class="w-3 h-3 cursor-pointer" />
                             )}
                           </div>
                         </td>
@@ -140,7 +138,7 @@ export default defineComponent({
             </div>
           </div>
         ) : null}
-        <div class="flex w-full h-16  bg-black/30 px-2 border-t border-slate-600/20">
+        <div class="flex w-full h-16  px-2 border-t border-slate-600/20">
           <video ref={music} class="hidden" />
           <div class="relative w-16 h-16 flex justify-center items-center">
             <img src={PlayerCover} alt="PlayerCover" class="w-12 h-12" />
@@ -152,13 +150,13 @@ export default defineComponent({
           </div>
           <div class="flex-grow flex justify-between pl-2 h-full pr-3">
             <div class="py-3 flex flex-grow justify-between flex-col">
-              <div class="text-xs text-white line-clamp-2">
+              <div class="text-xs line-clamp-2">
                 {player.value.name ? `《${player.value.name}》` : '歌曲名称'}
                 {player.value.artists
                   ? player.value.artists.map((i) => i.name).join(' / ')
                   : '歌手'}
               </div>
-              <div class="flex justify-between text-xs text-white pr-4 items-center">
+              <div class="flex justify-between text-xs font-light  pr-4 items-center">
                 <div class="flex-grow">
                   <Scrubber
                     v-model={currentTime.value}
@@ -186,18 +184,18 @@ export default defineComponent({
                 }}
               >
                 {!playing.value ? (
-                  <Play class="w-5 h-5 text-white" />
+                  <Play class="w-5 h-5" />
                 ) : (
-                  <Pause class="w-5 h-5 text-white" />
+                  <Pause class="w-5 h-5" />
                 )}
               </div>
               <div
-                class=" cursor-pointer"
+                class="cursor-pointer"
                 onClick={() => {
                   landState.value = !landState.value;
                 }}
               >
-                <List class="w-5 h-5 text-white" />
+                <List class="w-5 h-5" />
               </div>
             </div>
           </div>
