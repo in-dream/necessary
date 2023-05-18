@@ -1,14 +1,4 @@
-import {
-  Slot,
-  Slots,
-  computed,
-  defineComponent,
-  onMounted,
-  reactive,
-  ref,
-  toRef,
-  toRefs,
-} from 'vue';
+import { Slots, computed, defineComponent, onMounted, ref, watch } from 'vue';
 import { Play, Pause, List } from '@vicons/ionicons5';
 import PlayerCover from '@assets/images/singlecover.png';
 import { useMediaControls } from '@vueuse/core';
@@ -25,9 +15,14 @@ export default defineComponent({
       volume.value = 1;
       currentTime.value = 0;
     });
-
-    const { player, playerConfig, playerList } = storeToRefs(playerStore);
-
+    const { player, playerConfig, playerList, playingRef } =
+      storeToRefs(playerStore);
+    watch(
+      () => playingRef.value,
+      () => {
+        playing.value = playingRef.value;
+      },
+    );
     const music = ref<HTMLVideoElement>();
     const { playing, currentTime, duration, volume, buffered } =
       useMediaControls(music, { src: playerConfig });
@@ -39,14 +34,14 @@ export default defineComponent({
         setTimeout(() => {
           playerStore.checkIn(index);
           currentTime.value = 0;
-          playing.value = true;
+          playingRef.value = true;
         }, 50);
       };
-      playing.value = false;
-      !playing.value
+      playingRef.value = false;
+      !playingRef.value
         ? player.value.id !== playerList.value[index].id
           ? newMusic(index)
-          : (playing.value = false)
+          : (playingRef.value = false)
         : newMusic(index);
     };
 
@@ -74,13 +69,13 @@ export default defineComponent({
 
     return () => (
       <div
-        class="fixed bottom-0 text-slate-600 dark:text-slate-300 font-bold backdrop-blur-lg justify-center items-center overflow-hidden select-none"
+        class="fixed bottom-0 text-slate-600 dark:text-slate-300 font-bold backdrop-blur-2xl justify-center items-center overflow-hidden select-none"
         style="width:640px"
       >
         {landState.value ? (
           <div
             class={{
-              'px-3 py-5 border-t border-slate-600/5 text-xs font-light': true,
+              'px-3 py-5 border-t border-slate-400/5 text-xs font-light': true,
               'transition ease-in duration-100 ': landState.value,
             }}
           >
@@ -138,7 +133,7 @@ export default defineComponent({
             </div>
           </div>
         ) : null}
-        <div class="flex w-full h-16  px-2 border-t border-slate-600/20">
+        <div class="flex w-full h-16  px-2 border-t border-slate-400/5">
           <video ref={music} class="hidden" />
           <div class="relative w-16 h-16 flex justify-center items-center">
             <img src={PlayerCover} alt="PlayerCover" class="w-12 h-12" />

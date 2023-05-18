@@ -44,22 +44,10 @@ const posts = defineCollection({
       .transform((str) => (str ? new Date(str) : undefined)),
     author: z.string(),
     type: z.string().default('default'),
-    music: z
-      .object({
-        name: z.string(),
-        author: z.string(),
-        avatar: z.string(),
-        url: z.string(),
-      })
-      .default({
-        name: '',
-        author: '',
-        avatar: '',
-        url: '',
-      }),
+    music: z.string().default(''),
     photo: z.array(z.string()).default([]),
     location: z.string().default(defaultCity),
-    category: z.string().default('default'),
+    category: z.string().default('默认分类'),
   }),
 });
 

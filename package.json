@@ -12,7 +12,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "prettier": "prettier --config .prettierrc --write ."
+    "prettier": "prettier --config .prettierrc --write .",
+    "pm2": "pm2 start ./dist/server/entry.mjs --name nco.im"
   },
   "dependencies": {
     "@astrojs/mdx": "^0.19.1",
