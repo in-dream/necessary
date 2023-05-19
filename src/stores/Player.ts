@@ -33,7 +33,9 @@ export const usePlayerStore = defineStore('player-store', {
       this.playingRef = false;
       this.index = this.playerList.findIndex((item) => item.id === player.id);
       this.checkIn(this.index);
-      this.playingRef = true;
+      setTimeout(() => {
+        this.playingRef = true;
+      }, 100);
     },
 
     toggle() {

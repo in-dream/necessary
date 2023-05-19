@@ -3,6 +3,8 @@ import { Play } from '@vicons/ionicons5';
 import { usePlayerStore } from '@stores/Player';
 import type { Player } from '@api/model/MusicType';
 import { fetchMusicInfo } from '@api/repositories/Music';
+import defaultPlayer from '@assets/images/defaultPlayer.png';
+import background from '@assets/images/times.jpg';
 export default defineComponent({
   props: {
     playerId: {
@@ -23,10 +25,16 @@ export default defineComponent({
 
     return () => (
       <div class="bg-slate-400 w-72 h-16 rounded flex justify-center items-center overflow-hidden relative select-none">
-        <img src={player.value[0]?.picUrl} alt="back" class="blur-lg w-full" />
+        <img
+          src={player.value[0]?.picUrl ? player.value[0]?.picUrl : background}
+          alt="back"
+          class="blur-lg w-full"
+        />
         <div class="absolute w-full h-full flex justify-start items-start">
           <img
-            src={player.value[0]?.picUrl}
+            src={
+              player.value[0]?.picUrl ? player.value[0]?.picUrl : defaultPlayer
+            }
             alt="music-pic"
             class="w-16 h-16 object-cover"
           />

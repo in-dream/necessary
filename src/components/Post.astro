@@ -6,6 +6,7 @@ import Player from './Player.astro';
 import RenderContent from './RenderContent.astro';
 import PhotoView from '@dynamic/PhotoView';
 import Breadcrumb from '@dynamic/Breadcrumb';
+import PostPlayer from '@dynamic/PostPlayer';
 interface Props {
   post: CollectionEntry<'posts'> | undefined;
 }
@@ -25,7 +26,7 @@ const { post } = Astro.props;
             <div>
               {post.data.type === 'music' ? (
                 <div class="pt-4">
-                  <Player {...post.data.music} />
+                  <PostPlayer playerId={post.data.music} client:only="vue" />
                 </div>
               ) : null}
               {post.data.type === 'photo' ? (
