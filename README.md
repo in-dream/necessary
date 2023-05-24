@@ -1,7 +1,6 @@
 # Necessary Astro Theme
 
 An Astro-based theme for quickly building a blog.
-#### 项目暂停开发： 等待Astro SPA & Router Features 接入。https://github.com/NaCoLiu/necessary/issues/14
 
 ![necessary](https://img.shields.io/github/stars/nacoliu/necessary?style=for-the-badge&color=%230f172af2)
 ![neccssary](https://img.shields.io/github/license/nacoliu/necessary?style=for-the-badge&color=%230f172af2)
